@@ -1,0 +1,407 @@
+---
+import Icon from './Icon.astro';
+import type { Method } from '../data/types';
+
+interface Props {
+  method: Method;
+}
+
+const { method } = Astro.props;
+
+const searchText = [
+  method.name,
+  method.signature,
+  method.returns,
+  method.desc,
+  ...method.params.map((p) => `${p.name} ${p.type} ${p.desc}`)
+]
+  .join(' ')
+  .toLowerCase();
+
+const tierLabel = method.tier === 'essential' ? 'Essential ★' : 'Regular';
+---
+
+<article class="method" id={method.id} data-method-card data-tier={method.tier} data-search={searchText}>
+  <span class="timeline-node" aria-hidden="true"></span>
+
+  <div class="method__info">
+    <div class="method__head">
+      <h3 class="method__name">{method.name}</h3>
+      <span class={`tier tier--${method.tier}`}>{tierLabel}</span>
+      <a
+        class="anchor"
+        href={`#${method.id}`}
+        data-copy-link
+        title="Copiar enlace del método"
+        aria-label={`Copiar enlace de ${method.name}`}
+      >
+        <Icon name="hash" size={14} />
+        <span class="anchor__toast" aria-hidden="true">¡Copiado!</span>
+      </a>
+    </div>
+
+    <code class="method__signature">{method.signature}</code>
+
+    <p class="method__returns">
+      <span class="method__returns-label">Devuelve</span>
+      <code>{method.returns}</code>
+    </p>
+
+    <p class="method__desc">{method.desc}</p>
+
+    {
+      method.params.length > 0 && (
+        <dl class="params">
+          {method.params.map((param) => (
+            <div class="params__row">
+              <dt class="params__key">
+                <code>{param.name}</code>
+                <span class="params__type">{param.type}</span>
+                {!param.req && <span class="params__opt">opcional</span>}
+              </dt>
+              <dd class="params__desc">{param.desc}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+  </div>
+
+  <div class="method__code">
+    <div class="codebox">
+      <div class="codebox__bar">
+        <span class="codebox__dots" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <span class="codebox__file">python</span>
+        <button class="copy-btn" type="button" data-copy>
+          <Icon name="copy" size={13} />
+          <span class="copy-btn__label">Copiar</span>
+        </button>
+      </div>
+      <pre><code class="language-python">{method.code}</code></pre>
+    </div>
+  </div>
+</article>
+
+<style>
+  .method {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: var(--space-5);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .method:target {
+    border-color: var(--color-accent-border);
+    background: var(--color-surface-2);
+  }
+
+  .timeline-node {
+    position: absolute;
+    top: 2rem;
+    left: -28px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+
+  .method__head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .method__name {
+    font-size: var(--fs-lg);
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+  }
+
+  .tier {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .tier--essential {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent-border);
+  }
+
+  .tier--regular {
+    color: var(--color-text-muted);
+    background: var(--color-surface-3);
+    border-color: var(--color-border);
+  }
+
+  .anchor {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 26px;
+    height: 26px;
+    margin-left: auto;
+    padding: 0 7px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition:
+      color 0.18s ease,
+      background-color 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .anchor:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent-border);
+  }
+
+  .anchor.is-copied {
+    color: var(--color-success);
+    border-color: rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.1);
+  }
+
+  .anchor__toast {
+    display: none;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    white-space: nowrap;
+  }
+
+  .anchor.is-copied svg {
+    display: none;
+  }
+
+  .anchor.is-copied .anchor__toast {
+    display: inline;
+  }
+
+  .method__signature {
+    display: block;
+    font-size: var(--fs-sm);
+    color: var(--color-accent);
+    background: var(--color-code-bg);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .method__returns {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: var(--space-3) 0 0;
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+  }
+
+  .method__returns-label {
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-dim);
+  }
+
+  .method__returns code {
+    color: var(--color-text);
+    background: var(--color-surface-3);
+    border-radius: var(--radius-sm);
+    padding: 1px 7px;
+    font-size: var(--fs-xs);
+  }
+
+  .method__desc {
+    margin: var(--space-3) 0 var(--space-4);
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+  }
+
+  .params {
+    margin: 0;
+    padding: var(--space-3);
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-md);
+  }
+
+  .params__row + .params__row {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px dashed var(--color-border);
+  }
+
+  .params__key {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: 2px;
+  }
+
+  .params__key code {
+    font-size: var(--fs-sm);
+    color: var(--color-accent-hover);
+  }
+
+  .params__type {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+  }
+
+  .params__opt {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+    background: var(--color-surface-3);
+    border-radius: 999px;
+    padding: 1px 7px;
+  }
+
+  .params__desc {
+    margin: 0;
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+  }
+
+  .codebox {
+    background: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .codebox__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 8px 12px;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .codebox__dots {
+    display: inline-flex;
+    gap: 5px;
+  }
+
+  .codebox__dots i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+
+  .codebox__dots i:first-child {
+    background: #f87171;
+  }
+
+  .codebox__dots i:nth-child(2) {
+    background: #fbbf24;
+  }
+
+  .codebox__dots i:nth-child(3) {
+    background: #4ade80;
+  }
+
+  .codebox__file {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 4px 10px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    background: var(--color-surface-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease;
+  }
+
+  .copy-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent-border);
+    background: var(--color-accent-soft);
+  }
+
+  .copy-btn.is-copied {
+    color: var(--color-success);
+    border-color: rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.1);
+  }
+
+  .method__code .codebox pre {
+    margin: 0;
+    padding: var(--space-4);
+    overflow-x: auto;
+    flex: 1;
+    background: var(--color-code-bg);
+  }
+
+  .method__code .codebox pre code {
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+    background: none;
+    text-shadow: none;
+    color: #ccc;
+  }
+
+  @media (max-width: 980px) {
+    .method {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 820px) {
+    .method {
+      padding: var(--space-4);
+    }
+
+    .timeline-node {
+      left: -22px;
+      top: 1.5rem;
+    }
+  }
+</style>

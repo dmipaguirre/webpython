@@ -1,0 +1,32 @@
+{
+  "name": "webpython",
+  "version": "1.0.0",
+  "description": "Aprendiendo Python",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.18.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.18.0",
+  "type": "module",
+  "devDependencies": {
+    "@types/prismjs": "^1.26.6",
+    "astro": "^7.4.7"
+  },
+  "dependencies": {
+    "prismjs": "^1.30.0"
+  }
+}

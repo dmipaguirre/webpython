@@ -1,0 +1,1077 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v7.4.7"><title>Python Methods Reference v3.12 · Métodos nativos de Python</title><meta name="description" content="Hub de referencia interactivo con los métodos nativos de listas, tuplas, diccionarios y conjuntos en Python 3.12: firmas, parámetros, valores de retorno y ejemplos ejecutables."><meta name="author" content="Python Methods Reference"><meta name="robots" content="index, follow"><meta name="theme-color" content="#131417"><link rel="preload" href="/fonts/Antonio.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/FiraCode.woff2" as="font" type="font/woff2" crossorigin><meta property="og:type" content="website"><meta property="og:site_name" content="Python Methods Reference"><meta property="og:title" content="Python Methods Reference v3.12 · Métodos nativos de Python"><meta property="og:description" content="Hub de referencia interactivo con los métodos nativos de listas, tuplas, diccionarios y conjuntos en Python 3.12: firmas, parámetros, valores de retorno y ejemplos ejecutables."><meta property="og:locale" content="es_ES"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Python Methods Reference v3.12 · Métodos nativos de Python"><meta name="twitter:description" content="Hub de referencia interactivo con los métodos nativos de listas, tuplas, diccionarios y conjuntos en Python 3.12: firmas, parámetros, valores de retorno y ejemplos ejecutables."><style data-vite-dev-id="G:/Proyectos Python/webpython/src/styles/global.css">@font-face {
+  font-family: 'Antonio';
+  src: local('Antonio'), url('/fonts/Antonio.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: local('Fira Code'), url('/fonts/FiraCode.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #131417;
+  --color-surface: #16171b;
+  --color-surface-2: #191a1f;
+  --color-surface-3: #1d1e24;
+  --color-header: rgba(25, 26, 31, 0.82);
+  --color-border: #26272d;
+  --color-border-soft: #202127;
+  --color-text: #e7e7ea;
+  --color-text-muted: #9a9ba3;
+  --color-text-dim: #6d6e77;
+  --color-accent: #f97316;
+  --color-accent-hover: #fb923c;
+  --color-accent-soft: rgba(249, 115, 22, 0.14);
+  --color-accent-border: rgba(249, 115, 22, 0.4);
+  --color-success: #4ade80;
+  --color-code-bg: #0f1013;
+
+  --font-display: 'Antonio', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-xs: 0.6875rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: 2.5rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  --header-height: 74px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1.5rem);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+</style><style data-vite-dev-id="G:/Proyectos Python/webpython/src/components/MethodCard.astro?astro&amp;type=style&amp;index=0&amp;lang.css">.method[data-astro-cid-ey52zhxn] {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+  transition: border-color .2s, background-color .2s;
+}
+
+.method[data-astro-cid-ey52zhxn]:target {
+  border-color: var(--color-accent-border);
+  background: var(--color-surface-2);
+}
+
+.timeline-node[data-astro-cid-ey52zhxn] {
+  position: absolute;
+  top: 2rem;
+  left: -28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.method__head[data-astro-cid-ey52zhxn] {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.method__name[data-astro-cid-ey52zhxn] {
+  font-size: var(--fs-lg);
+  letter-spacing: .02em;
+  color: var(--color-text);
+}
+
+.tier[data-astro-cid-ey52zhxn] {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #0000;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.tier--essential[data-astro-cid-ey52zhxn] {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent-border);
+}
+
+.tier--regular[data-astro-cid-ey52zhxn] {
+  color: var(--color-text-muted);
+  background: var(--color-surface-3);
+  border-color: var(--color-border);
+}
+
+.anchor[data-astro-cid-ey52zhxn] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 26px;
+  height: 26px;
+  margin-left: auto;
+  padding: 0 7px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-dim);
+  text-decoration: none;
+  border: 1px solid #0000;
+  transition: color .18s, background-color .18s, border-color .18s;
+}
+
+.anchor[data-astro-cid-ey52zhxn]:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent-border);
+}
+
+.anchor[data-astro-cid-ey52zhxn].is-copied {
+  color: var(--color-success);
+  border-color: #4ade8066;
+  background: #4ade801a;
+}
+
+.anchor__toast[data-astro-cid-ey52zhxn] {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  white-space: nowrap;
+}
+
+.anchor[data-astro-cid-ey52zhxn].is-copied svg[data-astro-cid-ey52zhxn] {
+  display: none;
+}
+
+.anchor[data-astro-cid-ey52zhxn].is-copied .anchor__toast[data-astro-cid-ey52zhxn] {
+  display: inline;
+}
+
+.method__signature[data-astro-cid-ey52zhxn] {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--color-accent);
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  overflow-wrap: anywhere;
+}
+
+.method__returns[data-astro-cid-ey52zhxn] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.method__returns-label[data-astro-cid-ey52zhxn] {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--color-text-dim);
+}
+
+.method__returns[data-astro-cid-ey52zhxn] code[data-astro-cid-ey52zhxn] {
+  color: var(--color-text);
+  background: var(--color-surface-3);
+  border-radius: var(--radius-sm);
+  padding: 1px 7px;
+  font-size: var(--fs-xs);
+}
+
+.method__desc[data-astro-cid-ey52zhxn] {
+  margin: var(--space-3) 0 var(--space-4);
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+}
+
+.params[data-astro-cid-ey52zhxn] {
+  margin: 0;
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+}
+
+.params__row[data-astro-cid-ey52zhxn] + .params__row[data-astro-cid-ey52zhxn] {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+}
+
+.params__key[data-astro-cid-ey52zhxn] {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: 2px;
+}
+
+.params__key[data-astro-cid-ey52zhxn] code[data-astro-cid-ey52zhxn] {
+  font-size: var(--fs-sm);
+  color: var(--color-accent-hover);
+}
+
+.params__type[data-astro-cid-ey52zhxn] {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+}
+
+.params__opt[data-astro-cid-ey52zhxn] {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-text-dim);
+  background: var(--color-surface-3);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
+.params__desc[data-astro-cid-ey52zhxn] {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.codebox[data-astro-cid-ey52zhxn] {
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.codebox__bar[data-astro-cid-ey52zhxn] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px 12px;
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.codebox__dots[data-astro-cid-ey52zhxn] {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.codebox__dots[data-astro-cid-ey52zhxn] i[data-astro-cid-ey52zhxn] {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.codebox__dots[data-astro-cid-ey52zhxn] i[data-astro-cid-ey52zhxn]:first-child {
+  background: #f87171;
+}
+
+.codebox__dots[data-astro-cid-ey52zhxn] i[data-astro-cid-ey52zhxn]:nth-child(2) {
+  background: #fbbf24;
+}
+
+.codebox__dots[data-astro-cid-ey52zhxn] i[data-astro-cid-ey52zhxn]:nth-child(3) {
+  background: #4ade80;
+}
+
+.codebox__file[data-astro-cid-ey52zhxn] {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+}
+
+.copy-btn[data-astro-cid-ey52zhxn] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+
+.copy-btn[data-astro-cid-ey52zhxn]:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-border);
+  background: var(--color-accent-soft);
+}
+
+.copy-btn[data-astro-cid-ey52zhxn].is-copied {
+  color: var(--color-success);
+  border-color: #4ade8066;
+  background: #4ade801a;
+}
+
+.method__code[data-astro-cid-ey52zhxn] .codebox[data-astro-cid-ey52zhxn] pre[data-astro-cid-ey52zhxn] {
+  margin: 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+  flex: 1;
+  background: var(--color-code-bg);
+}
+
+.method__code[data-astro-cid-ey52zhxn] .codebox[data-astro-cid-ey52zhxn] pre[data-astro-cid-ey52zhxn] code[data-astro-cid-ey52zhxn] {
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  background: none;
+  text-shadow: none;
+  color: #ccc;
+}
+
+@media (width <= 980px) {
+  .method[data-astro-cid-ey52zhxn] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (width <= 820px) {
+  .method[data-astro-cid-ey52zhxn] {
+    padding: var(--space-4);
+  }
+
+  .timeline-node[data-astro-cid-ey52zhxn] {
+    left: -22px;
+    top: 1.5rem;
+  }
+}
+</style><style data-vite-dev-id="G:/Proyectos Python/webpython/src/components/TierFilter.astro?astro&amp;type=style&amp;index=0&amp;lang.css">.tier-filter[data-astro-cid-bb33g7tr] {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tier-btn[data-astro-cid-bb33g7tr] {
+  padding: 7px 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: .04em;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+
+.tier-btn[data-astro-cid-bb33g7tr]:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-dim);
+}
+
+.tier-btn[data-astro-cid-bb33g7tr].is-active {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent-border);
+}
+
+.tier-filter__count[data-astro-cid-bb33g7tr] {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+}
+</style><style data-vite-dev-id="G:/Proyectos Python/webpython/src/components/ReferenceHub.astro?astro&amp;type=style&amp;index=0&amp;lang.css">.hub-header[data-astro-cid-uhwpxljj] {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-header);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hub-header__inner[data-astro-cid-uhwpxljj] {
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: var(--header-height);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.brand[data-astro-cid-uhwpxljj] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.brand__mark[data-astro-cid-uhwpxljj] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+}
+
+.brand__text[data-astro-cid-uhwpxljj] {
+  min-width: 0;
+}
+
+.brand__title[data-astro-cid-uhwpxljj] {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand__version[data-astro-cid-uhwpxljj] {
+  color: var(--color-accent);
+  font-size: var(--fs-sm);
+}
+
+.brand__subtitle[data-astro-cid-uhwpxljj] {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  letter-spacing: .04em;
+}
+
+.search[data-astro-cid-uhwpxljj] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 440px;
+}
+
+.search__icon[data-astro-cid-uhwpxljj] {
+  position: absolute;
+  left: 12px;
+  display: inline-flex;
+  color: var(--color-text-dim);
+  pointer-events: none;
+}
+
+.search__input[data-astro-cid-uhwpxljj] {
+  width: 100%;
+  padding: 9px 46px 9px 36px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s;
+}
+
+.search__input[data-astro-cid-uhwpxljj]::placeholder {
+  color: var(--color-text-dim);
+}
+
+.search__input[data-astro-cid-uhwpxljj]:focus {
+  border-color: var(--color-accent-border);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.search__input[data-astro-cid-uhwpxljj]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.search__kbd[data-astro-cid-uhwpxljj] {
+  position: absolute;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.hub[data-astro-cid-uhwpxljj] {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr) 232px;
+  gap: var(--space-6);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-5) 24px 96px;
+  align-items: start;
+}
+
+.sidebar[data-astro-cid-uhwpxljj], .toc-panel[data-astro-cid-uhwpxljj] {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-5));
+  max-height: calc(100vh - var(--header-height) - var(--space-6));
+  overflow-y: auto;
+}
+
+.sidebar__label[data-astro-cid-uhwpxljj], .toc-panel__label[data-astro-cid-uhwpxljj] {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--color-text-dim);
+}
+
+.sidebar__list[data-astro-cid-uhwpxljj] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cat-btn[data-astro-cid-uhwpxljj] {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px 12px;
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid #0000;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: color .18s, background-color .18s, border-color .18s;
+}
+
+.cat-btn[data-astro-cid-uhwpxljj]:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.cat-btn[data-astro-cid-uhwpxljj].is-active {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent-border);
+}
+
+.cat-btn__icon[data-astro-cid-uhwpxljj] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-3);
+  color: inherit;
+}
+
+.cat-btn[data-astro-cid-uhwpxljj].is-active .cat-btn__icon[data-astro-cid-uhwpxljj] {
+  background: #f9731633;
+}
+
+.cat-btn__name[data-astro-cid-uhwpxljj] {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.cat-btn__badge[data-astro-cid-uhwpxljj] {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.cat-btn[data-astro-cid-uhwpxljj].is-active .cat-btn__badge[data-astro-cid-uhwpxljj] {
+  color: var(--color-accent);
+  border-color: var(--color-accent-border);
+  background: none;
+}
+
+.sidebar__foot[data-astro-cid-uhwpxljj] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-soft);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+}
+
+.sidebar__foot[data-astro-cid-uhwpxljj] p[data-astro-cid-uhwpxljj] {
+  margin: 0;
+}
+
+.sidebar__foot-dot[data-astro-cid-uhwpxljj] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 0 3px #4ade8026;
+}
+
+.content[data-astro-cid-uhwpxljj] {
+  min-width: 0;
+}
+
+.breadcrumb[data-astro-cid-uhwpxljj] {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.category__title[data-astro-cid-uhwpxljj] {
+  margin-top: var(--space-3);
+  font-size: var(--fs-2xl);
+  letter-spacing: .02em;
+  color: var(--color-text);
+}
+
+.category__desc[data-astro-cid-uhwpxljj] {
+  margin: var(--space-3) 0 var(--space-4);
+  max-width: 70ch;
+  color: var(--color-text-muted);
+}
+
+.props[data-astro-cid-uhwpxljj] {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+}
+
+.prop[data-astro-cid-uhwpxljj] {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.prop[data-astro-cid-uhwpxljj]:first-child {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent-border);
+}
+
+.filters-row[data-astro-cid-uhwpxljj] {
+  display: block;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.timeline[data-astro-cid-uhwpxljj] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-left: 34px;
+}
+
+.timeline[data-astro-cid-uhwpxljj]:before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom,
+      transparent,
+      var(--color-border) 8%,
+      var(--color-border) 92%,
+      transparent);
+}
+
+.empty[data-astro-cid-uhwpxljj] {
+  margin: var(--space-5) 0 0;
+  padding: var(--space-5);
+  text-align: center;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.empty[data-astro-cid-uhwpxljj] span[data-astro-cid-uhwpxljj] {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+
+.toc[data-astro-cid-uhwpxljj] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-left: 1px solid var(--color-border);
+}
+
+.toc__link[data-astro-cid-uhwpxljj] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 10px;
+  margin-left: -1px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  text-decoration: none;
+  border-left: 1px solid #0000;
+  transition: color .16s, border-color .16s;
+}
+
+.toc__link[data-astro-cid-uhwpxljj]:hover {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+}
+
+.toc__dot[data-astro-cid-uhwpxljj] {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .6;
+}
+
+@media (width <= 1180px) {
+  .hub[data-astro-cid-uhwpxljj] {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .toc-panel[data-astro-cid-uhwpxljj] {
+    display: none;
+  }
+}
+
+@media (width <= 820px) {
+  .hub-header__inner[data-astro-cid-uhwpxljj] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+    padding: 12px 16px;
+  }
+
+  .brand__title[data-astro-cid-uhwpxljj] {
+    white-space: normal;
+    font-size: var(--fs-md);
+  }
+
+  .search[data-astro-cid-uhwpxljj] {
+    max-width: none;
+  }
+
+  .hub[data-astro-cid-uhwpxljj] {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-4) 16px 72px;
+  }
+
+  .sidebar[data-astro-cid-uhwpxljj] {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .sidebar__list[data-astro-cid-uhwpxljj] {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+  }
+
+  .sidebar__list[data-astro-cid-uhwpxljj] li[data-astro-cid-uhwpxljj] {
+    flex: none;
+  }
+
+  .cat-btn[data-astro-cid-uhwpxljj] {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .sidebar__foot[data-astro-cid-uhwpxljj] {
+    display: none;
+  }
+
+  .timeline[data-astro-cid-uhwpxljj] {
+    padding-left: 24px;
+  }
+
+  .timeline[data-astro-cid-uhwpxljj]:before {
+    left: 8px;
+  }
+
+  .category__title[data-astro-cid-uhwpxljj] {
+    font-size: var(--fs-xl);
+  }
+}
+</style><script type="module" src="/@vite/client"></script><script type="module" src="/src/styles/global.css"></script><script type="module" src="/src/components/MethodCard.astro?astro&type=style&index=0&lang.css"></script><script type="module" src="/src/components/TierFilter.astro?astro&type=style&index=0&lang.css"></script><script type="module" src="/src/components/ReferenceHub.astro?astro&type=style&index=0&lang.css"></script></head><body><header class="hub-header" data-astro-cid-uhwpxljj><div class="hub-header__inner" data-astro-cid-uhwpxljj><div class="brand" data-astro-cid-uhwpxljj><span class="brand__mark" data-astro-cid-uhwpxljj><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></g></svg></span><div class="brand__text" data-astro-cid-uhwpxljj><p class="brand__title" data-astro-cid-uhwpxljj>Python Methods Reference <span class="brand__version" data-astro-cid-uhwpxljj>v3.12</span></p><p class="brand__subtitle" data-astro-cid-uhwpxljj>Métodos nativos de estructuras de datos</p></div></div><div class="search" data-astro-cid-uhwpxljj><span class="search__icon" data-astro-cid-uhwpxljj><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></g></svg></span><input class="search__input" id="hub-search" type="search" placeholder="Buscar métodos, firmas o parámetros…" aria-label="Buscar métodos" autocomplete="off" spellcheck="false" data-astro-cid-uhwpxljj><kbd class="search__kbd" data-astro-cid-uhwpxljj>/</kbd></div></div></header><div class="hub" data-astro-cid-uhwpxljj><aside class="sidebar" data-astro-cid-uhwpxljj><p class="sidebar__label" data-astro-cid-uhwpxljj>Estructuras</p><ul class="sidebar__list" data-astro-cid-uhwpxljj><li data-astro-cid-uhwpxljj><button type="button" class="cat-btn is-active" data-category-btn="listas" aria-pressed="true" data-astro-cid-uhwpxljj><span class="cat-btn__icon" data-astro-cid-uhwpxljj><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="8" x2="21" y1="6" y2="6"></line><line x1="8" x2="21" y1="12" y2="12"></line><line x1="8" x2="21" y1="18" y2="18"></line><line x1="3" x2="3.01" y1="6" y2="6"></line><line x1="3" x2="3.01" y1="12" y2="12"></line><line x1="3" x2="3.01" y1="18" y2="18"></line></g></svg></span><span class="cat-btn__name" data-astro-cid-uhwpxljj>Listas</span><span class="cat-btn__badge" data-astro-cid-uhwpxljj>11</span></button></li><li data-astro-cid-uhwpxljj><button type="button" class="cat-btn" data-category-btn="tuplas" aria-pressed="false" data-astro-cid-uhwpxljj><span class="cat-btn__icon" data-astro-cid-uhwpxljj><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="m12 2 9 5-9 5-9-5 9-5Z"></path><path d="m3 12 9 5 9-5"></path><path d="m3 17 9 5 9-5"></path></g></svg></span><span class="cat-btn__name" data-astro-cid-uhwpxljj>Tuplas</span><span class="cat-btn__badge" data-astro-cid-uhwpxljj>6</span></button></li><li data-astro-cid-uhwpxljj><button type="button" class="cat-btn" data-category-btn="diccionarios" aria-pressed="false" data-astro-cid-uhwpxljj><span class="cat-btn__icon" data-astro-cid-uhwpxljj><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></g></svg></span><span class="cat-btn__name" data-astro-cid-uhwpxljj>Diccionarios</span><span class="cat-btn__badge" data-astro-cid-uhwpxljj>11</span></button></li><li data-astro-cid-uhwpxljj><button type="button" class="cat-btn" data-category-btn="sets" aria-pressed="false" data-astro-cid-uhwpxljj><span class="cat-btn__icon" data-astro-cid-uhwpxljj><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></g></svg></span><span class="cat-btn__name" data-astro-cid-uhwpxljj>Conjuntos</span><span class="cat-btn__badge" data-astro-cid-uhwpxljj>13</span></button></li></ul><div class="sidebar__foot" data-astro-cid-uhwpxljj><span class="sidebar__foot-dot" aria-hidden="true" data-astro-cid-uhwpxljj></span><p data-astro-cid-uhwpxljj>41 métodos documentados</p></div></aside><main class="content" data-astro-cid-uhwpxljj><section class="category" data-category-panel="listas" data-astro-cid-uhwpxljj><nav class="breadcrumb" aria-label="Ruta de navegación" data-astro-cid-uhwpxljj><span data-astro-cid-uhwpxljj>Inicio</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="m9 18 6-6-6-6"></path></g></svg><span data-astro-cid-uhwpxljj>Listas</span></nav><h2 class="category__title" data-astro-cid-uhwpxljj>Métodos para Listas (list)</h2><p class="category__desc" data-astro-cid-uhwpxljj>Las listas son secuencias mutables y ordenadas que permiten elementos duplicados. Son la estructura de datos más utilizada en Python para colecciones de tamaño variable.</p><ul class="props" data-astro-cid-uhwpxljj><li class="prop" data-astro-cid-uhwpxljj>Mutable</li><li class="prop" data-astro-cid-uhwpxljj>Secuencia ordenada</li><li class="prop" data-astro-cid-uhwpxljj>Permite duplicados</li><li class="prop" data-astro-cid-uhwpxljj>Indexada por posición</li></ul><div class="filters-row" data-astro-cid-uhwpxljj><div class="tier-filter" role="group" aria-label="Filtrar métodos por nivel" data-astro-cid-bb33g7tr><button type="button" class="tier-btn is-active" data-tier-filter="all" aria-pressed="true" data-astro-cid-bb33g7tr>All</button><button type="button" class="tier-btn" data-tier-filter="essential" aria-pressed="false" data-astro-cid-bb33g7tr>Essential ★</button><button type="button" class="tier-btn" data-tier-filter="regular" aria-pressed="false" data-astro-cid-bb33g7tr>Regular</button><span class="tier-filter__count" data-results aria-live="polite" data-astro-cid-bb33g7tr></span></div></div><div class="timeline" data-timeline="listas" data-astro-cid-uhwpxljj><article class="method" id="append" data-method-card data-tier="essential" data-search="append() list.append(x) none añade un elemento al final de la lista, sin modificar los demás. x object elemento que se agrega al final de la lista." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>append()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#append" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de append()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.append(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Añade un elemento al final de la lista, sin modificar los demás.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento que se agrega al final de la lista.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>frutas = [&quot;manzana&quot;, &quot;pera&quot;]
+frutas.append(&quot;naranja&quot;)
+print(frutas)
+# [&#39;manzana&#39;, &#39;pera&#39;, &#39;naranja&#39;]</code></pre></div></div></article><article class="method" id="extend" data-method-card data-tier="essential" data-search="extend() list.extend(iterable) none agrega todos los elementos de un iterable al final de la lista. iterable iterable colección (lista, tupla, rango, string) cuyos elementos se agregan." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>extend()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#extend" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de extend()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.extend(iterable)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Agrega todos los elementos de un iterable al final de la lista.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>iterable</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Colección (lista, tupla, rango, string) cuyos elementos se agregan.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = [1, 2, 3]
+numeros.extend([4, 5, 6])
+print(numeros)
+# [1, 2, 3, 4, 5, 6]</code></pre></div></div></article><article class="method" id="insert" data-method-card data-tier="regular" data-search="insert() list.insert(i, x) none inserta un elemento en la posición indicada por el índice i. i int índice donde se inserta el elemento. x object elemento que se inserta en la lista." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>insert()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#insert" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de insert()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.insert(i, x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Inserta un elemento en la posición indicada por el índice i.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>i</code><span class="params__type" data-astro-cid-ey52zhxn>int</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Índice donde se inserta el elemento.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento que se inserta en la lista.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>colores = [&quot;rojo&quot;, &quot;azul&quot;]
+colores.insert(1, &quot;verde&quot;)
+print(colores)
+# [&#39;rojo&#39;, &#39;verde&#39;, &#39;azul&#39;]</code></pre></div></div></article><article class="method" id="remove" data-method-card data-tier="essential" data-search="remove() list.remove(x) none elimina la primera aparición del elemento x; lanza valueerror si no existe. x object elemento que se busca y elimina de la lista." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>remove()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#remove" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de remove()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.remove(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina la primera aparición del elemento x; lanza ValueError si no existe.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento que se busca y elimina de la lista.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>frutas = [&quot;manzana&quot;, &quot;pera&quot;, &quot;manzana&quot;]
+frutas.remove(&quot;manzana&quot;)
+print(frutas)
+# [&#39;pera&#39;, &#39;manzana&#39;]</code></pre></div></div></article><article class="method" id="pop" data-method-card data-tier="essential" data-search="pop() list.pop([i]) object elimina y devuelve el elemento de la lista; por defecto el último. i int índice del elemento a eliminar. si se omite, se elimina el último." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>pop()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#pop" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de pop()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.pop([i])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>object</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina y devuelve el elemento de la lista; por defecto el último.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>i</code><span class="params__type" data-astro-cid-ey52zhxn>int</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Índice del elemento a eliminar. Si se omite, se elimina el último.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>pila = [10, 20, 30]
+ultimo = pila.pop()
+print(ultimo)  # 30
+print(pila)    # [10, 20]</code></pre></div></div></article><article class="method" id="clear" data-method-card data-tier="regular" data-search="clear() list.clear() none elimina todos los elementos de la lista, dejándola vacía." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>clear()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#clear" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de clear()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.clear()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina todos los elementos de la lista, dejándola vacía.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>lista = [1, 2, 3]
+lista.clear()
+print(lista)
+# []</code></pre></div></div></article><article class="method" id="index" data-method-card data-tier="regular" data-search="index() list.index(x[, start[, end]]) int devuelve el índice de la primera aparición de x; lanza valueerror si no se encuentra. x object elemento cuya posición se busca. start int índice inicial de la búsqueda. end int índice final (exclusivo) de la búsqueda." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>index()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#index" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de index()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.index(x[, start[, end]])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>int</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve el índice de la primera aparición de x; lanza ValueError si no se encuentra.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento cuya posición se busca.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>start</code><span class="params__type" data-astro-cid-ey52zhxn>int</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Índice inicial de la búsqueda.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>end</code><span class="params__type" data-astro-cid-ey52zhxn>int</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Índice final (exclusivo) de la búsqueda.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = [3, 7, 7, 12]
+print(numeros.index(7))     # 1
+print(numeros.index(7, 2))  # 2</code></pre></div></div></article><article class="method" id="count" data-method-card data-tier="regular" data-search="count() list.count(x) int cuenta cuántas veces aparece el elemento x en la lista. x object elemento que se busca para contar sus apariciones." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>count()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#count" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de count()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.count(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>int</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Cuenta cuántas veces aparece el elemento x en la lista.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento que se busca para contar sus apariciones.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>notas = [4, 5, 4, 3, 5, 4]
+print(notas.count(4))
+# 3</code></pre></div></div></article><article class="method" id="sort" data-method-card data-tier="essential" data-search="sort() list.sort(*, key=none, reverse=false) none ordena la lista in-place según el criterio indicado por key. key callable función que devuelve un valor de ordenación para cada elemento. reverse bool si es true, ordena de forma descendente." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>sort()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#sort" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de sort()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.sort(*, key=None, reverse=False)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Ordena la lista in-place según el criterio indicado por key.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>key</code><span class="params__type" data-astro-cid-ey52zhxn>callable</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Función que devuelve un valor de ordenación para cada elemento.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>reverse</code><span class="params__type" data-astro-cid-ey52zhxn>bool</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Si es True, ordena de forma descendente.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = [5, 2, 8, 1]
+numeros.sort()
+print(numeros)  # [1, 2, 5, 8]
+
+numeros.sort(reverse=True)
+print(numeros)  # [8, 5, 2, 1]</code></pre></div></div></article><article class="method" id="reverse" data-method-card data-tier="regular" data-search="reverse() list.reverse() none invierte el orden de los elementos de la lista en su lugar." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>reverse()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#reverse" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de reverse()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.reverse()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Invierte el orden de los elementos de la lista en su lugar.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = [1, 2, 3]
+numeros.reverse()
+print(numeros)
+# [3, 2, 1]</code></pre></div></div></article><article class="method" id="copy" data-method-card data-tier="regular" data-search="copy() list.copy() list devuelve una copia superficial (shallow copy) de la lista." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>copy()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#copy" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de copy()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>list.copy()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>list</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve una copia superficial (shallow copy) de la lista.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>original = [1, 2, 3]
+copia = original.copy()
+copia.append(4)
+print(original)  # [1, 2, 3]
+print(copia)     # [1, 2, 3, 4]</code></pre></div></div></article></div><p class="empty" data-empty hidden data-astro-cid-uhwpxljj>Sin resultados para «<span data-empty-query data-astro-cid-uhwpxljj></span>» en Listas.</p></section><section class="category" data-category-panel="tuplas" hidden data-astro-cid-uhwpxljj><nav class="breadcrumb" aria-label="Ruta de navegación" data-astro-cid-uhwpxljj><span data-astro-cid-uhwpxljj>Inicio</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="m9 18 6-6-6-6"></path></g></svg><span data-astro-cid-uhwpxljj>Tuplas</span></nav><h2 class="category__title" data-astro-cid-uhwpxljj>Métodos para Tuplas (tuple)</h2><p class="category__desc" data-astro-cid-uhwpxljj>Las tuplas son secuencias inmutables y ordenadas. Al no poder modificarse tras su creación, además de sus dos métodos nativos se usan operadores integrados para trabajar con ellas.</p><ul class="props" data-astro-cid-uhwpxljj><li class="prop" data-astro-cid-uhwpxljj>Inmutable</li><li class="prop" data-astro-cid-uhwpxljj>Secuencia ordenada</li><li class="prop" data-astro-cid-uhwpxljj>Permite duplicados</li><li class="prop" data-astro-cid-uhwpxljj>Indexada por posición</li></ul><div class="filters-row" data-astro-cid-uhwpxljj><div class="tier-filter" role="group" aria-label="Filtrar métodos por nivel" data-astro-cid-bb33g7tr><button type="button" class="tier-btn is-active" data-tier-filter="all" aria-pressed="true" data-astro-cid-bb33g7tr>All</button><button type="button" class="tier-btn" data-tier-filter="essential" aria-pressed="false" data-astro-cid-bb33g7tr>Essential ★</button><button type="button" class="tier-btn" data-tier-filter="regular" aria-pressed="false" data-astro-cid-bb33g7tr>Regular</button><span class="tier-filter__count" data-results aria-live="polite" data-astro-cid-bb33g7tr></span></div></div><div class="timeline" data-timeline="tuplas" data-astro-cid-uhwpxljj></div><p class="empty" data-empty hidden data-astro-cid-uhwpxljj>Sin resultados para «<span data-empty-query data-astro-cid-uhwpxljj></span>» en Tuplas.</p></section><section class="category" data-category-panel="diccionarios" hidden data-astro-cid-uhwpxljj><nav class="breadcrumb" aria-label="Ruta de navegación" data-astro-cid-uhwpxljj><span data-astro-cid-uhwpxljj>Inicio</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="m9 18 6-6-6-6"></path></g></svg><span data-astro-cid-uhwpxljj>Diccionarios</span></nav><h2 class="category__title" data-astro-cid-uhwpxljj>Métodos para Diccionarios (dict)</h2><p class="category__desc" data-astro-cid-uhwpxljj>Los diccionarios almacenan pares clave-valor con acceso por hash. Las claves deben ser inmutables y únicas, mientras que los valores pueden ser de cualquier tipo.</p><ul class="props" data-astro-cid-uhwpxljj><li class="prop" data-astro-cid-uhwpxljj>Mutable</li><li class="prop" data-astro-cid-uhwpxljj>Orden de inserción</li><li class="prop" data-astro-cid-uhwpxljj>Claves únicas</li><li class="prop" data-astro-cid-uhwpxljj>Acceso por hash</li></ul><div class="filters-row" data-astro-cid-uhwpxljj><div class="tier-filter" role="group" aria-label="Filtrar métodos por nivel" data-astro-cid-bb33g7tr><button type="button" class="tier-btn is-active" data-tier-filter="all" aria-pressed="true" data-astro-cid-bb33g7tr>All</button><button type="button" class="tier-btn" data-tier-filter="essential" aria-pressed="false" data-astro-cid-bb33g7tr>Essential ★</button><button type="button" class="tier-btn" data-tier-filter="regular" aria-pressed="false" data-astro-cid-bb33g7tr>Regular</button><span class="tier-filter__count" data-results aria-live="polite" data-astro-cid-bb33g7tr></span></div></div><div class="timeline" data-timeline="diccionarios" data-astro-cid-uhwpxljj></div><p class="empty" data-empty hidden data-astro-cid-uhwpxljj>Sin resultados para «<span data-empty-query data-astro-cid-uhwpxljj></span>» en Diccionarios.</p></section><section class="category" data-category-panel="sets" hidden data-astro-cid-uhwpxljj><nav class="breadcrumb" aria-label="Ruta de navegación" data-astro-cid-uhwpxljj><span data-astro-cid-uhwpxljj>Inicio</span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path d="m9 18 6-6-6-6"></path></g></svg><span data-astro-cid-uhwpxljj>Conjuntos</span></nav><h2 class="category__title" data-astro-cid-uhwpxljj>Métodos para Conjuntos (set)</h2><p class="category__desc" data-astro-cid-uhwpxljj>Los conjuntos almacenan elementos únicos sin orden garantizado. Su implementación interna está basada en tablas hash, lo que hace muy rápidas las operaciones de pertenencia.</p><ul class="props" data-astro-cid-uhwpxljj><li class="prop" data-astro-cid-uhwpxljj>Mutable</li><li class="prop" data-astro-cid-uhwpxljj>Sin orden</li><li class="prop" data-astro-cid-uhwpxljj>Sin duplicados</li><li class="prop" data-astro-cid-uhwpxljj>Elementos únicos</li></ul><div class="filters-row" data-astro-cid-uhwpxljj><div class="tier-filter" role="group" aria-label="Filtrar métodos por nivel" data-astro-cid-bb33g7tr><button type="button" class="tier-btn is-active" data-tier-filter="all" aria-pressed="true" data-astro-cid-bb33g7tr>All</button><button type="button" class="tier-btn" data-tier-filter="essential" aria-pressed="false" data-astro-cid-bb33g7tr>Essential ★</button><button type="button" class="tier-btn" data-tier-filter="regular" aria-pressed="false" data-astro-cid-bb33g7tr>Regular</button><span class="tier-filter__count" data-results aria-live="polite" data-astro-cid-bb33g7tr></span></div></div><div class="timeline" data-timeline="sets" data-astro-cid-uhwpxljj></div><p class="empty" data-empty hidden data-astro-cid-uhwpxljj>Sin resultados para «<span data-empty-query data-astro-cid-uhwpxljj></span>» en Conjuntos.</p></section><template data-cards="tuplas" data-astro-cid-uhwpxljj><article class="method" id="count" data-method-card data-tier="essential" data-search="count() tuple.count(x) int cuenta cuántas veces aparece el elemento x en la tupla. x object elemento que se busca para contar sus apariciones." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>count()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#count" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de count()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>tuple.count(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>int</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Cuenta cuántas veces aparece el elemento x en la tupla.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento que se busca para contar sus apariciones.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>tupla = (1, 2, 2, 3)
+print(tupla.count(2))
+# 1</code></pre></div></div></article><article class="method" id="index" data-method-card data-tier="essential" data-search="index() tuple.index(x[, start[, end]]) int devuelve el índice de la primera aparición de x; lanza valueerror si no existe. x object elemento cuya posición se busca. start int índice inicial de la búsqueda. end int índice final (exclusivo) de la búsqueda." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>index()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#index" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de index()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>tuple.index(x[, start[, end]])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>int</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve el índice de la primera aparición de x; lanza ValueError si no existe.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento cuya posición se busca.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>start</code><span class="params__type" data-astro-cid-ey52zhxn>int</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Índice inicial de la búsqueda.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>end</code><span class="params__type" data-astro-cid-ey52zhxn>int</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Índice final (exclusivo) de la búsqueda.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>tupla = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+print(tupla.index(&quot;b&quot;))
+# 1</code></pre></div></div></article><article class="method" id="concat" data-method-card data-tier="regular" data-search="+ (concatenar) tuple + tuple tuple une dos tuplas en una nueva, dejando las originales intactas. other tuple tupla que se concatena al final de la primera." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>+ (concatenar)</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#concat" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de + (concatenar)" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>tuple + tuple</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>tuple</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Une dos tuplas en una nueva, dejando las originales intactas.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>other</code><span class="params__type" data-astro-cid-ey52zhxn>tuple</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Tupla que se concatena al final de la primera.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>tupla = (1, 2) + (3, 4)
+print(tupla)
+# (1, 2, 3, 4)</code></pre></div></div></article><article class="method" id="repeat" data-method-card data-tier="regular" data-search="* (repetir) tuple * n tuple crea una nueva tupla repitiendo los elementos n veces. n int número de veces que se repiten los elementos." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>* (repetir)</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#repeat" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de * (repetir)" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>tuple * n</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>tuple</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Crea una nueva tupla repitiendo los elementos n veces.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>n</code><span class="params__type" data-astro-cid-ey52zhxn>int</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Número de veces que se repiten los elementos.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>tupla = (&quot;hola&quot;,) * 3
+print(tupla)
+# (&#39;hola&#39;, &#39;hola&#39;, &#39;hola&#39;)</code></pre></div></div></article><article class="method" id="contains" data-method-card data-tier="essential" data-search="in (pertenencia) x in tuple bool comprueba si un elemento pertenece a la tupla. x object elemento que se comprueba dentro de la tupla." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>in (pertenencia)</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#contains" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de in (pertenencia)" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>x in tuple</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>bool</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Comprueba si un elemento pertenece a la tupla.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento que se comprueba dentro de la tupla.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>tupla = (1, 2, 3)
+print(2 in tupla)       # True
+print(5 not in tupla)   # True</code></pre></div></div></article><article class="method" id="length" data-method-card data-tier="essential" data-search="len() len(tuple) int función integrada que devuelve la cantidad de elementos de la tupla." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>len()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#length" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de len()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>len(tuple)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>int</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Función integrada que devuelve la cantidad de elementos de la tupla.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>tupla = (10, 20, 30)
+print(len(tupla))
+# 3</code></pre></div></div></article></template><template data-cards="diccionarios" data-astro-cid-uhwpxljj><article class="method" id="clear" data-method-card data-tier="regular" data-search="clear() dict.clear() none elimina todos los pares clave-valor del diccionario." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>clear()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#clear" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de clear()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.clear()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina todos los pares clave-valor del diccionario.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+d.clear()
+print(d)
+# {}</code></pre></div></div></article><article class="method" id="copy" data-method-card data-tier="regular" data-search="copy() dict.copy() dict devuelve una copia superficial del diccionario." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>copy()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#copy" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de copy()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.copy()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>dict</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve una copia superficial del diccionario.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>original = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+copia = original.copy()
+copia[&quot;c&quot;] = 3
+print(original)
+# {&#39;a&#39;: 1, &#39;b&#39;: 2}</code></pre></div></div></article><article class="method" id="fromkeys" data-method-card data-tier="regular" data-search="fromkeys() dict.fromkeys(iterable[, value]) dict crea un diccionario con las claves del iterable y un valor común. iterable iterable elementos que serán las claves del nuevo diccionario. value object valor asignado a todas las claves. por defecto none." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>fromkeys()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#fromkeys" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de fromkeys()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.fromkeys(iterable[, value])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>dict</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Crea un diccionario con las claves del iterable y un valor común.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>iterable</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elementos que serán las claves del nuevo diccionario.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>value</code><span class="params__type" data-astro-cid-ey52zhxn>object</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Valor asignado a todas las claves. Por defecto None.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>claves = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+d = dict.fromkeys(claves, 0)
+print(d)
+# {&#39;a&#39;: 0, &#39;b&#39;: 0, &#39;c&#39;: 0}</code></pre></div></div></article><article class="method" id="get" data-method-card data-tier="essential" data-search="get() dict.get(key[, default]) object | none devuelve el valor de la clave; si no existe, devuelve el valor por defecto. key hashable clave que se busca en el diccionario. default object valor devuelto si la clave no está presente." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>get()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#get" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de get()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.get(key[, default])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>object | None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve el valor de la clave; si no existe, devuelve el valor por defecto.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>key</code><span class="params__type" data-astro-cid-ey52zhxn>hashable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Clave que se busca en el diccionario.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>default</code><span class="params__type" data-astro-cid-ey52zhxn>object</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Valor devuelto si la clave no está presente.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;nombre&quot;: &quot;Ada&quot;}
+print(d.get(&quot;nombre&quot;))   # Ada
+print(d.get(&quot;edad&quot;, 0))  # 0</code></pre></div></div></article><article class="method" id="items" data-method-card data-tier="essential" data-search="items() dict.items() dict_items devuelve una vista con los pares (clave, valor) del diccionario." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>items()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#items" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de items()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.items()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>dict_items</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve una vista con los pares (clave, valor) del diccionario.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+for clave, valor in d.items():
+    print(clave, valor)
+# a 1
+# b 2</code></pre></div></div></article><article class="method" id="keys" data-method-card data-tier="essential" data-search="keys() dict.keys() dict_keys devuelve una vista con todas las claves del diccionario." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>keys()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#keys" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de keys()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.keys()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>dict_keys</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve una vista con todas las claves del diccionario.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+print(list(d.keys()))
+# [&#39;a&#39;, &#39;b&#39;]</code></pre></div></div></article><article class="method" id="pop" data-method-card data-tier="essential" data-search="pop() dict.pop(key[, default]) object elimina la clave y devuelve su valor; lanza keyerror si no existe sin default. key hashable clave que se elimina del diccionario. default object valor devuelto si la clave no está presente." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>pop()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#pop" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de pop()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.pop(key[, default])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>object</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina la clave y devuelve su valor; lanza KeyError si no existe sin default.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>key</code><span class="params__type" data-astro-cid-ey52zhxn>hashable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Clave que se elimina del diccionario.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>default</code><span class="params__type" data-astro-cid-ey52zhxn>object</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Valor devuelto si la clave no está presente.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+valor = d.pop(&quot;a&quot;)
+print(valor)  # 1
+print(d)      # {&#39;b&#39;: 2}</code></pre></div></div></article><article class="method" id="popitem" data-method-card data-tier="regular" data-search="popitem() dict.popitem() tuple elimina y devuelve el último par clave-valor insertado (lifo)." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>popitem()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#popitem" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de popitem()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.popitem()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>tuple</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina y devuelve el último par clave-valor insertado (LIFO).</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+print(d.popitem())
+# (&#39;b&#39;, 2)
+print(d)
+# {&#39;a&#39;: 1}</code></pre></div></div></article><article class="method" id="setdefault" data-method-card data-tier="regular" data-search="setdefault() dict.setdefault(key[, default]) object devuelve el valor de la clave; si no existe, la inserta con el valor por defecto. key hashable clave que se comprueba e inserta si falta. default object valor a insertar si la clave no existe. por defecto none." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>setdefault()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#setdefault" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de setdefault()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.setdefault(key[, default])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>object</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve el valor de la clave; si no existe, la inserta con el valor por defecto.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>key</code><span class="params__type" data-astro-cid-ey52zhxn>hashable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Clave que se comprueba e inserta si falta.</dd></div><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>default</code><span class="params__type" data-astro-cid-ey52zhxn>object</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Valor a insertar si la clave no existe. Por defecto None.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1}
+print(d.setdefault(&quot;a&quot;, 10))  # 1
+print(d.setdefault(&quot;b&quot;, 10))  # 10
+print(d)
+# {&#39;a&#39;: 1, &#39;b&#39;: 10}</code></pre></div></div></article><article class="method" id="update" data-method-card data-tier="essential" data-search="update() dict.update([other]) none actualiza el diccionario con los pares de otro dict o iterable de pares. other dict | iterable diccionario o iterable de pares clave-valor a fusionar." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>update()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#update" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de update()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.update([other])</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Actualiza el diccionario con los pares de otro dict o iterable de pares.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>other</code><span class="params__type" data-astro-cid-ey52zhxn>dict | iterable</span><span class="params__opt" data-astro-cid-ey52zhxn>opcional</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Diccionario o iterable de pares clave-valor a fusionar.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1}
+d.update({&quot;b&quot;: 2, &quot;c&quot;: 3})
+print(d)
+# {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</code></pre></div></div></article><article class="method" id="values" data-method-card data-tier="essential" data-search="values() dict.values() dict_values devuelve una vista con todos los valores del diccionario." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>values()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#values" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de values()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>dict.values()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>dict_values</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve una vista con todos los valores del diccionario.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+print(list(d.values()))
+# [1, 2]</code></pre></div></div></article></template><template data-cards="sets" data-astro-cid-uhwpxljj><article class="method" id="add" data-method-card data-tier="essential" data-search="add() set.add(x) none agrega un elemento al conjunto; si ya existe, no produce ningún cambio. x object elemento hashable que se agrega al conjunto." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>add()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#add" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de add()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.add(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Agrega un elemento al conjunto; si ya existe, no produce ningún cambio.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento hashable que se agrega al conjunto.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = {1, 2}
+numeros.add(3)
+print(numeros)
+# {1, 2, 3}</code></pre></div></div></article><article class="method" id="remove" data-method-card data-tier="essential" data-search="remove() set.remove(x) none elimina el elemento x; lanza keyerror si el elemento no está en el conjunto. x object elemento hashable que se elimina del conjunto." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>remove()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#remove" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de remove()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.remove(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina el elemento x; lanza KeyError si el elemento no está en el conjunto.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento hashable que se elimina del conjunto.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = {1, 2, 3}
+numeros.remove(2)
+print(numeros)
+# {1, 3}</code></pre></div></div></article><article class="method" id="discard" data-method-card data-tier="essential" data-search="discard() set.discard(x) none elimina el elemento x si existe, sin lanzar error en caso contrario. x object elemento hashable que se intenta eliminar." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>discard()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#discard" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de discard()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.discard(x)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina el elemento x si existe, sin lanzar error en caso contrario.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>x</code><span class="params__type" data-astro-cid-ey52zhxn>object</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Elemento hashable que se intenta eliminar.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = {1, 2}
+numeros.discard(5)
+print(numeros)
+# {1, 2}</code></pre></div></div></article><article class="method" id="pop" data-method-card data-tier="regular" data-search="pop() set.pop() object elimina y devuelve un elemento arbitrario; lanza keyerror si el conjunto está vacío." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>pop()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#pop" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de pop()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.pop()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>object</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina y devuelve un elemento arbitrario; lanza KeyError si el conjunto está vacío.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = {1, 2, 3}
+elemento = numeros.pop()
+print(elemento)
+print(numeros)</code></pre></div></div></article><article class="method" id="clear" data-method-card data-tier="regular" data-search="clear() set.clear() none elimina todos los elementos del conjunto." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>clear()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#clear" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de clear()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.clear()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Elimina todos los elementos del conjunto.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>numeros = {1, 2, 3}
+numeros.clear()
+print(numeros)
+# set()</code></pre></div></div></article><article class="method" id="copy" data-method-card data-tier="regular" data-search="copy() set.copy() set devuelve una copia superficial del conjunto." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>copy()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#copy" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de copy()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.copy()</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>set</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve una copia superficial del conjunto.</p></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>original = {1, 2}
+copia = original.copy()
+copia.add(3)
+print(original)  # {1, 2}
+print(copia)     # {1, 2, 3}</code></pre></div></div></article><article class="method" id="union" data-method-card data-tier="essential" data-search="union() set.union(*others) set devuelve un nuevo conjunto con todos los elementos de los conjuntos unidos (|). others iterable conjuntos o iterables que se unen al actual." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>union()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#union" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de union()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.union(*others)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>set</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve un nuevo conjunto con todos los elementos de los conjuntos unidos (|).</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>others</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjuntos o iterables que se unen al actual.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2}
+b = {2, 3}
+print(a.union(b))
+# {1, 2, 3}
+print(a | b)
+# {1, 2, 3}</code></pre></div></div></article><article class="method" id="intersection" data-method-card data-tier="essential" data-search="intersection() set.intersection(*others) set devuelve un nuevo conjunto con los elementos comunes (&amp;). others iterable conjuntos o iterables con los que se calcula la intersección." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>intersection()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#intersection" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de intersection()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.intersection(*others)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>set</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve un nuevo conjunto con los elementos comunes (&amp;).</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>others</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjuntos o iterables con los que se calcula la intersección.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2, 3}
+b = {2, 3, 4}
+print(a.intersection(b))
+# {2, 3}
+print(a &amp; b)
+# {2, 3}</code></pre></div></div></article><article class="method" id="difference" data-method-card data-tier="essential" data-search="difference() set.difference(*others) set devuelve un nuevo conjunto con los elementos que no están en otros (-). others iterable conjuntos o iterables cuyos elementos se descartan." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>difference()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#difference" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de difference()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.difference(*others)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>set</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve un nuevo conjunto con los elementos que no están en otros (-).</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>others</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjuntos o iterables cuyos elementos se descartan.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2, 3}
+b = {2, 3}
+print(a.difference(b))
+# {1}
+print(a - b)
+# {1}</code></pre></div></div></article><article class="method" id="symmetric_difference" data-method-card data-tier="regular" data-search="symmetric_difference() set.symmetric_difference(other) set devuelve los elementos que están en uno u otro conjunto, pero no en ambos (^). other iterable conjunto con el que se calcula la diferencia simétrica." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>symmetric_difference()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#symmetric_difference" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de symmetric_difference()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.symmetric_difference(other)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>set</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Devuelve los elementos que están en uno u otro conjunto, pero no en ambos (^).</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>other</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjunto con el que se calcula la diferencia simétrica.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2, 3}
+b = {2, 4}
+print(a.symmetric_difference(b))
+# {1, 3, 4}
+print(a ^ b)
+# {1, 3, 4}</code></pre></div></div></article><article class="method" id="update" data-method-card data-tier="essential" data-search="update() set.update(*others) none agrega en su lugar todos los elementos de otros conjuntos o iterables. others iterable conjuntos o iterables cuyos elementos se agregan." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>update()</h3><span class="tier tier--essential" data-astro-cid-ey52zhxn>Essential ★</span><a class="anchor" href="#update" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de update()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.update(*others)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>None</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Agrega en su lugar todos los elementos de otros conjuntos o iterables.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>others</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjuntos o iterables cuyos elementos se agregan.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2}
+a.update([2, 3])
+print(a)
+# {1, 2, 3}</code></pre></div></div></article><article class="method" id="isdisjoint" data-method-card data-tier="regular" data-search="isdisjoint() set.isdisjoint(other) bool comprueba si dos conjuntos no comparten ningún elemento. other iterable conjunto o iterable con el que se compara." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>isdisjoint()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#isdisjoint" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de isdisjoint()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.isdisjoint(other)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>bool</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Comprueba si dos conjuntos no comparten ningún elemento.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>other</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjunto o iterable con el que se compara.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2}
+b = {3, 4}
+print(a.isdisjoint(b))  # True
+print(a.isdisjoint({2}))  # False</code></pre></div></div></article><article class="method" id="issuperset" data-method-card data-tier="regular" data-search="issuperset() set.issuperset(other) bool comprueba si el conjunto contiene todos los elementos de otro. other iterable conjunto o iterable que se comprueba dentro del actual." data-astro-cid-ey52zhxn><span class="timeline-node" aria-hidden="true" data-astro-cid-ey52zhxn></span><div class="method__info" data-astro-cid-ey52zhxn><div class="method__head" data-astro-cid-ey52zhxn><h3 class="method__name" data-astro-cid-ey52zhxn>issuperset()</h3><span class="tier tier--regular" data-astro-cid-ey52zhxn>Regular</span><a class="anchor" href="#issuperset" data-copy-link title="Copiar enlace del método" aria-label="Copiar enlace de issuperset()" data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></g></svg><span class="anchor__toast" aria-hidden="true" data-astro-cid-ey52zhxn>¡Copiado!</span></a></div><code class="method__signature" data-astro-cid-ey52zhxn>set.issuperset(other)</code><p class="method__returns" data-astro-cid-ey52zhxn><span class="method__returns-label" data-astro-cid-ey52zhxn>Devuelve</span><code data-astro-cid-ey52zhxn>bool</code></p><p class="method__desc" data-astro-cid-ey52zhxn>Comprueba si el conjunto contiene todos los elementos de otro.</p><dl class="params" data-astro-cid-ey52zhxn><div class="params__row" data-astro-cid-ey52zhxn><dt class="params__key" data-astro-cid-ey52zhxn><code data-astro-cid-ey52zhxn>other</code><span class="params__type" data-astro-cid-ey52zhxn>iterable</span></dt><dd class="params__desc" data-astro-cid-ey52zhxn>Conjunto o iterable que se comprueba dentro del actual.</dd></div></dl></div><div class="method__code" data-astro-cid-ey52zhxn><div class="codebox" data-astro-cid-ey52zhxn><div class="codebox__bar" data-astro-cid-ey52zhxn><span class="codebox__dots" aria-hidden="true" data-astro-cid-ey52zhxn><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i><i data-astro-cid-ey52zhxn></i></span><span class="codebox__file" data-astro-cid-ey52zhxn>python</span><button class="copy-btn" type="button" data-copy data-astro-cid-ey52zhxn><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></g></svg><span class="copy-btn__label" data-astro-cid-ey52zhxn>Copiar</span></button></div><pre data-astro-cid-ey52zhxn><code class="language-python" data-astro-cid-ey52zhxn>a = {1, 2, 3}
+print(a.issuperset({1, 2}))  # True
+print(a.issuperset({4}))     # False</code></pre></div></div></article></template></main><aside class="toc-panel" data-astro-cid-uhwpxljj><p class="toc-panel__label" data-astro-cid-uhwpxljj>En esta página</p><ul class="toc" data-toc="listas" data-astro-cid-uhwpxljj><li data-astro-cid-uhwpxljj><a class="toc__link" href="#append" data-toc-link="append" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>append()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#extend" data-toc-link="extend" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>extend()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#insert" data-toc-link="insert" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>insert()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#remove" data-toc-link="remove" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>remove()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#pop" data-toc-link="pop" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>pop()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#clear" data-toc-link="clear" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>clear()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#index" data-toc-link="index" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>index()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#count" data-toc-link="count" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>count()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#sort" data-toc-link="sort" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>sort()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#reverse" data-toc-link="reverse" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>reverse()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#copy" data-toc-link="copy" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>copy()</a></li></ul><ul class="toc" data-toc="tuplas" hidden data-astro-cid-uhwpxljj><li data-astro-cid-uhwpxljj><a class="toc__link" href="#count" data-toc-link="count" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>count()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#index" data-toc-link="index" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>index()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#concat" data-toc-link="concat" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>+ (concatenar)</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#repeat" data-toc-link="repeat" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>* (repetir)</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#contains" data-toc-link="contains" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>in (pertenencia)</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#length" data-toc-link="length" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>len()</a></li></ul><ul class="toc" data-toc="diccionarios" hidden data-astro-cid-uhwpxljj><li data-astro-cid-uhwpxljj><a class="toc__link" href="#clear" data-toc-link="clear" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>clear()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#copy" data-toc-link="copy" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>copy()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#fromkeys" data-toc-link="fromkeys" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>fromkeys()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#get" data-toc-link="get" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>get()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#items" data-toc-link="items" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>items()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#keys" data-toc-link="keys" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>keys()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#pop" data-toc-link="pop" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>pop()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#popitem" data-toc-link="popitem" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>popitem()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#setdefault" data-toc-link="setdefault" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>setdefault()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#update" data-toc-link="update" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>update()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#values" data-toc-link="values" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>values()</a></li></ul><ul class="toc" data-toc="sets" hidden data-astro-cid-uhwpxljj><li data-astro-cid-uhwpxljj><a class="toc__link" href="#add" data-toc-link="add" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>add()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#remove" data-toc-link="remove" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>remove()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#discard" data-toc-link="discard" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>discard()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#pop" data-toc-link="pop" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>pop()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#clear" data-toc-link="clear" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>clear()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#copy" data-toc-link="copy" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>copy()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#union" data-toc-link="union" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>union()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#intersection" data-toc-link="intersection" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>intersection()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#difference" data-toc-link="difference" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>difference()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#symmetric_difference" data-toc-link="symmetric_difference" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>symmetric_difference()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#update" data-toc-link="update" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>update()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#isdisjoint" data-toc-link="isdisjoint" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>isdisjoint()</a></li><li data-astro-cid-uhwpxljj><a class="toc__link" href="#issuperset" data-toc-link="issuperset" data-astro-cid-uhwpxljj><span class="toc__dot" aria-hidden="true" data-astro-cid-uhwpxljj></span>issuperset()</a></li></ul></aside></div><script type="module" src="/src/components/ReferenceHub.astro?astro&type=script&index=0&lang.ts"></script></body></html>

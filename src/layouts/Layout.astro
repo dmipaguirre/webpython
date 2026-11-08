@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  author?: string;
+  robots?: string;
+  url?: string;
+  image?: string;
+}
+
+const { title, description, author, robots, url, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <Seo title={title} description={description} author={author} robots={robots} url={url} image={image} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

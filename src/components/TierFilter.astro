@@ -1,0 +1,66 @@
+---
+const filters = [
+  { id: 'all', label: 'All' },
+  { id: 'essential', label: 'Essential ★' },
+  { id: 'regular', label: 'Regular' }
+];
+---
+
+<div class="tier-filter" role="group" aria-label="Filtrar métodos por nivel">
+  {
+    filters.map((filter) => (
+      <button
+        type="button"
+        class={`tier-btn${filter.id === 'all' ? ' is-active' : ''}`}
+        data-tier-filter={filter.id}
+        aria-pressed={filter.id === 'all'}
+      >
+        {filter.label}
+      </button>
+    ))
+  }
+  <span class="tier-filter__count" data-results aria-live="polite"></span>
+</div>
+
+<style>
+  .tier-filter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tier-btn {
+    padding: 7px 14px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease;
+  }
+
+  .tier-btn:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-dim);
+  }
+
+  .tier-btn.is-active {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent-border);
+  }
+
+  .tier-filter__count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+  }
+</style>

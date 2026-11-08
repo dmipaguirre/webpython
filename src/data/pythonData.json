@@ -1,0 +1,510 @@
+{
+  "listas": {
+    "title": "Métodos para Listas (list)",
+    "breadcrumb": "Listas",
+    "description": "Las listas son secuencias mutables y ordenadas que permiten elementos duplicados. Son la estructura de datos más utilizada en Python para colecciones de tamaño variable.",
+    "properties": ["Mutable", "Secuencia ordenada", "Permite duplicados", "Indexada por posición"],
+    "methods": [
+      {
+        "id": "append",
+        "name": "append()",
+        "tier": "essential",
+        "signature": "list.append(x)",
+        "returns": "None",
+        "desc": "Añade un elemento al final de la lista, sin modificar los demás.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento que se agrega al final de la lista." }
+        ],
+        "code": "frutas = [\"manzana\", \"pera\"]\nfrutas.append(\"naranja\")\nprint(frutas)\n# ['manzana', 'pera', 'naranja']"
+      },
+      {
+        "id": "extend",
+        "name": "extend()",
+        "tier": "essential",
+        "signature": "list.extend(iterable)",
+        "returns": "None",
+        "desc": "Agrega todos los elementos de un iterable al final de la lista.",
+        "params": [
+          { "name": "iterable", "type": "iterable", "req": true, "desc": "Colección (lista, tupla, rango, string) cuyos elementos se agregan." }
+        ],
+        "code": "numeros = [1, 2, 3]\nnumeros.extend([4, 5, 6])\nprint(numeros)\n# [1, 2, 3, 4, 5, 6]"
+      },
+      {
+        "id": "insert",
+        "name": "insert()",
+        "tier": "regular",
+        "signature": "list.insert(i, x)",
+        "returns": "None",
+        "desc": "Inserta un elemento en la posición indicada por el índice i.",
+        "params": [
+          { "name": "i", "type": "int", "req": true, "desc": "Índice donde se inserta el elemento." },
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento que se inserta en la lista." }
+        ],
+        "code": "colores = [\"rojo\", \"azul\"]\ncolores.insert(1, \"verde\")\nprint(colores)\n# ['rojo', 'verde', 'azul']"
+      },
+      {
+        "id": "remove",
+        "name": "remove()",
+        "tier": "essential",
+        "signature": "list.remove(x)",
+        "returns": "None",
+        "desc": "Elimina la primera aparición del elemento x; lanza ValueError si no existe.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento que se busca y elimina de la lista." }
+        ],
+        "code": "frutas = [\"manzana\", \"pera\", \"manzana\"]\nfrutas.remove(\"manzana\")\nprint(frutas)\n# ['pera', 'manzana']"
+      },
+      {
+        "id": "pop",
+        "name": "pop()",
+        "tier": "essential",
+        "signature": "list.pop([i])",
+        "returns": "object",
+        "desc": "Elimina y devuelve el elemento de la lista; por defecto el último.",
+        "params": [
+          { "name": "i", "type": "int", "req": false, "desc": "Índice del elemento a eliminar. Si se omite, se elimina el último." }
+        ],
+        "code": "pila = [10, 20, 30]\nultimo = pila.pop()\nprint(ultimo)  # 30\nprint(pila)    # [10, 20]"
+      },
+      {
+        "id": "clear",
+        "name": "clear()",
+        "tier": "regular",
+        "signature": "list.clear()",
+        "returns": "None",
+        "desc": "Elimina todos los elementos de la lista, dejándola vacía.",
+        "params": [],
+        "code": "lista = [1, 2, 3]\nlista.clear()\nprint(lista)\n# []"
+      },
+      {
+        "id": "index",
+        "name": "index()",
+        "tier": "regular",
+        "signature": "list.index(x[, start[, end]])",
+        "returns": "int",
+        "desc": "Devuelve el índice de la primera aparición de x; lanza ValueError si no se encuentra.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento cuya posición se busca." },
+          { "name": "start", "type": "int", "req": false, "desc": "Índice inicial de la búsqueda." },
+          { "name": "end", "type": "int", "req": false, "desc": "Índice final (exclusivo) de la búsqueda." }
+        ],
+        "code": "numeros = [3, 7, 7, 12]\nprint(numeros.index(7))     # 1\nprint(numeros.index(7, 2))  # 2"
+      },
+      {
+        "id": "count",
+        "name": "count()",
+        "tier": "regular",
+        "signature": "list.count(x)",
+        "returns": "int",
+        "desc": "Cuenta cuántas veces aparece el elemento x en la lista.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento que se busca para contar sus apariciones." }
+        ],
+        "code": "notas = [4, 5, 4, 3, 5, 4]\nprint(notas.count(4))\n# 3"
+      },
+      {
+        "id": "sort",
+        "name": "sort()",
+        "tier": "essential",
+        "signature": "list.sort(*, key=None, reverse=False)",
+        "returns": "None",
+        "desc": "Ordena la lista in-place según el criterio indicado por key.",
+        "params": [
+          { "name": "key", "type": "callable", "req": false, "desc": "Función que devuelve un valor de ordenación para cada elemento." },
+          { "name": "reverse", "type": "bool", "req": false, "desc": "Si es True, ordena de forma descendente." }
+        ],
+        "code": "numeros = [5, 2, 8, 1]\nnumeros.sort()\nprint(numeros)  # [1, 2, 5, 8]\n\nnumeros.sort(reverse=True)\nprint(numeros)  # [8, 5, 2, 1]"
+      },
+      {
+        "id": "reverse",
+        "name": "reverse()",
+        "tier": "regular",
+        "signature": "list.reverse()",
+        "returns": "None",
+        "desc": "Invierte el orden de los elementos de la lista en su lugar.",
+        "params": [],
+        "code": "numeros = [1, 2, 3]\nnumeros.reverse()\nprint(numeros)\n# [3, 2, 1]"
+      },
+      {
+        "id": "copy",
+        "name": "copy()",
+        "tier": "regular",
+        "signature": "list.copy()",
+        "returns": "list",
+        "desc": "Devuelve una copia superficial (shallow copy) de la lista.",
+        "params": [],
+        "code": "original = [1, 2, 3]\ncopia = original.copy()\ncopia.append(4)\nprint(original)  # [1, 2, 3]\nprint(copia)     # [1, 2, 3, 4]"
+      }
+    ]
+  },
+  "tuplas": {
+    "title": "Métodos para Tuplas (tuple)",
+    "breadcrumb": "Tuplas",
+    "description": "Las tuplas son secuencias inmutables y ordenadas. Al no poder modificarse tras su creación, además de sus dos métodos nativos se usan operadores integrados para trabajar con ellas.",
+    "properties": ["Inmutable", "Secuencia ordenada", "Permite duplicados", "Indexada por posición"],
+    "methods": [
+      {
+        "id": "count",
+        "name": "count()",
+        "tier": "essential",
+        "signature": "tuple.count(x)",
+        "returns": "int",
+        "desc": "Cuenta cuántas veces aparece el elemento x en la tupla.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento que se busca para contar sus apariciones." }
+        ],
+        "code": "tupla = (1, 2, 2, 3)\nprint(tupla.count(2))\n# 1"
+      },
+      {
+        "id": "index",
+        "name": "index()",
+        "tier": "essential",
+        "signature": "tuple.index(x[, start[, end]])",
+        "returns": "int",
+        "desc": "Devuelve el índice de la primera aparición de x; lanza ValueError si no existe.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento cuya posición se busca." },
+          { "name": "start", "type": "int", "req": false, "desc": "Índice inicial de la búsqueda." },
+          { "name": "end", "type": "int", "req": false, "desc": "Índice final (exclusivo) de la búsqueda." }
+        ],
+        "code": "tupla = (\"a\", \"b\", \"c\")\nprint(tupla.index(\"b\"))\n# 1"
+      },
+      {
+        "id": "concat",
+        "name": "+ (concatenar)",
+        "tier": "regular",
+        "signature": "tuple + tuple",
+        "returns": "tuple",
+        "desc": "Une dos tuplas en una nueva, dejando las originales intactas.",
+        "params": [
+          { "name": "other", "type": "tuple", "req": true, "desc": "Tupla que se concatena al final de la primera." }
+        ],
+        "code": "tupla = (1, 2) + (3, 4)\nprint(tupla)\n# (1, 2, 3, 4)"
+      },
+      {
+        "id": "repeat",
+        "name": "* (repetir)",
+        "tier": "regular",
+        "signature": "tuple * n",
+        "returns": "tuple",
+        "desc": "Crea una nueva tupla repitiendo los elementos n veces.",
+        "params": [
+          { "name": "n", "type": "int", "req": true, "desc": "Número de veces que se repiten los elementos." }
+        ],
+        "code": "tupla = (\"hola\",) * 3\nprint(tupla)\n# ('hola', 'hola', 'hola')"
+      },
+      {
+        "id": "contains",
+        "name": "in (pertenencia)",
+        "tier": "essential",
+        "signature": "x in tuple",
+        "returns": "bool",
+        "desc": "Comprueba si un elemento pertenece a la tupla.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento que se comprueba dentro de la tupla." }
+        ],
+        "code": "tupla = (1, 2, 3)\nprint(2 in tupla)       # True\nprint(5 not in tupla)   # True"
+      },
+      {
+        "id": "length",
+        "name": "len()",
+        "tier": "essential",
+        "signature": "len(tuple)",
+        "returns": "int",
+        "desc": "Función integrada que devuelve la cantidad de elementos de la tupla.",
+        "params": [],
+        "code": "tupla = (10, 20, 30)\nprint(len(tupla))\n# 3"
+      }
+    ]
+  },
+  "diccionarios": {
+    "title": "Métodos para Diccionarios (dict)",
+    "breadcrumb": "Diccionarios",
+    "description": "Los diccionarios almacenan pares clave-valor con acceso por hash. Las claves deben ser inmutables y únicas, mientras que los valores pueden ser de cualquier tipo.",
+    "properties": ["Mutable", "Orden de inserción", "Claves únicas", "Acceso por hash"],
+    "methods": [
+      {
+        "id": "clear",
+        "name": "clear()",
+        "tier": "regular",
+        "signature": "dict.clear()",
+        "returns": "None",
+        "desc": "Elimina todos los pares clave-valor del diccionario.",
+        "params": [],
+        "code": "d = {\"a\": 1, \"b\": 2}\nd.clear()\nprint(d)\n# {}"
+      },
+      {
+        "id": "copy",
+        "name": "copy()",
+        "tier": "regular",
+        "signature": "dict.copy()",
+        "returns": "dict",
+        "desc": "Devuelve una copia superficial del diccionario.",
+        "params": [],
+        "code": "original = {\"a\": 1, \"b\": 2}\ncopia = original.copy()\ncopia[\"c\"] = 3\nprint(original)\n# {'a': 1, 'b': 2}"
+      },
+      {
+        "id": "fromkeys",
+        "name": "fromkeys()",
+        "tier": "regular",
+        "signature": "dict.fromkeys(iterable[, value])",
+        "returns": "dict",
+        "desc": "Crea un diccionario con las claves del iterable y un valor común.",
+        "params": [
+          { "name": "iterable", "type": "iterable", "req": true, "desc": "Elementos que serán las claves del nuevo diccionario." },
+          { "name": "value", "type": "object", "req": false, "desc": "Valor asignado a todas las claves. Por defecto None." }
+        ],
+        "code": "claves = (\"a\", \"b\", \"c\")\nd = dict.fromkeys(claves, 0)\nprint(d)\n# {'a': 0, 'b': 0, 'c': 0}"
+      },
+      {
+        "id": "get",
+        "name": "get()",
+        "tier": "essential",
+        "signature": "dict.get(key[, default])",
+        "returns": "object | None",
+        "desc": "Devuelve el valor de la clave; si no existe, devuelve el valor por defecto.",
+        "params": [
+          { "name": "key", "type": "hashable", "req": true, "desc": "Clave que se busca en el diccionario." },
+          { "name": "default", "type": "object", "req": false, "desc": "Valor devuelto si la clave no está presente." }
+        ],
+        "code": "d = {\"nombre\": \"Ada\"}\nprint(d.get(\"nombre\"))   # Ada\nprint(d.get(\"edad\", 0))  # 0"
+      },
+      {
+        "id": "items",
+        "name": "items()",
+        "tier": "essential",
+        "signature": "dict.items()",
+        "returns": "dict_items",
+        "desc": "Devuelve una vista con los pares (clave, valor) del diccionario.",
+        "params": [],
+        "code": "d = {\"a\": 1, \"b\": 2}\nfor clave, valor in d.items():\n    print(clave, valor)\n# a 1\n# b 2"
+      },
+      {
+        "id": "keys",
+        "name": "keys()",
+        "tier": "essential",
+        "signature": "dict.keys()",
+        "returns": "dict_keys",
+        "desc": "Devuelve una vista con todas las claves del diccionario.",
+        "params": [],
+        "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.keys()))\n# ['a', 'b']"
+      },
+      {
+        "id": "pop",
+        "name": "pop()",
+        "tier": "essential",
+        "signature": "dict.pop(key[, default])",
+        "returns": "object",
+        "desc": "Elimina la clave y devuelve su valor; lanza KeyError si no existe sin default.",
+        "params": [
+          { "name": "key", "type": "hashable", "req": true, "desc": "Clave que se elimina del diccionario." },
+          { "name": "default", "type": "object", "req": false, "desc": "Valor devuelto si la clave no está presente." }
+        ],
+        "code": "d = {\"a\": 1, \"b\": 2}\nvalor = d.pop(\"a\")\nprint(valor)  # 1\nprint(d)      # {'b': 2}"
+      },
+      {
+        "id": "popitem",
+        "name": "popitem()",
+        "tier": "regular",
+        "signature": "dict.popitem()",
+        "returns": "tuple",
+        "desc": "Elimina y devuelve el último par clave-valor insertado (LIFO).",
+        "params": [],
+        "code": "d = {\"a\": 1, \"b\": 2}\nprint(d.popitem())\n# ('b', 2)\nprint(d)\n# {'a': 1}"
+      },
+      {
+        "id": "setdefault",
+        "name": "setdefault()",
+        "tier": "regular",
+        "signature": "dict.setdefault(key[, default])",
+        "returns": "object",
+        "desc": "Devuelve el valor de la clave; si no existe, la inserta con el valor por defecto.",
+        "params": [
+          { "name": "key", "type": "hashable", "req": true, "desc": "Clave que se comprueba e inserta si falta." },
+          { "name": "default", "type": "object", "req": false, "desc": "Valor a insertar si la clave no existe. Por defecto None." }
+        ],
+        "code": "d = {\"a\": 1}\nprint(d.setdefault(\"a\", 10))  # 1\nprint(d.setdefault(\"b\", 10))  # 10\nprint(d)\n# {'a': 1, 'b': 10}"
+      },
+      {
+        "id": "update",
+        "name": "update()",
+        "tier": "essential",
+        "signature": "dict.update([other])",
+        "returns": "None",
+        "desc": "Actualiza el diccionario con los pares de otro dict o iterable de pares.",
+        "params": [
+          { "name": "other", "type": "dict | iterable", "req": false, "desc": "Diccionario o iterable de pares clave-valor a fusionar." }
+        ],
+        "code": "d = {\"a\": 1}\nd.update({\"b\": 2, \"c\": 3})\nprint(d)\n# {'a': 1, 'b': 2, 'c': 3}"
+      },
+      {
+        "id": "values",
+        "name": "values()",
+        "tier": "essential",
+        "signature": "dict.values()",
+        "returns": "dict_values",
+        "desc": "Devuelve una vista con todos los valores del diccionario.",
+        "params": [],
+        "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.values()))\n# [1, 2]"
+      }
+    ]
+  },
+  "sets": {
+    "title": "Métodos para Conjuntos (set)",
+    "breadcrumb": "Conjuntos",
+    "description": "Los conjuntos almacenan elementos únicos sin orden garantizado. Su implementación interna está basada en tablas hash, lo que hace muy rápidas las operaciones de pertenencia.",
+    "properties": ["Mutable", "Sin orden", "Sin duplicados", "Elementos únicos"],
+    "methods": [
+      {
+        "id": "add",
+        "name": "add()",
+        "tier": "essential",
+        "signature": "set.add(x)",
+        "returns": "None",
+        "desc": "Agrega un elemento al conjunto; si ya existe, no produce ningún cambio.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento hashable que se agrega al conjunto." }
+        ],
+        "code": "numeros = {1, 2}\nnumeros.add(3)\nprint(numeros)\n# {1, 2, 3}"
+      },
+      {
+        "id": "remove",
+        "name": "remove()",
+        "tier": "essential",
+        "signature": "set.remove(x)",
+        "returns": "None",
+        "desc": "Elimina el elemento x; lanza KeyError si el elemento no está en el conjunto.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento hashable que se elimina del conjunto." }
+        ],
+        "code": "numeros = {1, 2, 3}\nnumeros.remove(2)\nprint(numeros)\n# {1, 3}"
+      },
+      {
+        "id": "discard",
+        "name": "discard()",
+        "tier": "essential",
+        "signature": "set.discard(x)",
+        "returns": "None",
+        "desc": "Elimina el elemento x si existe, sin lanzar error en caso contrario.",
+        "params": [
+          { "name": "x", "type": "object", "req": true, "desc": "Elemento hashable que se intenta eliminar." }
+        ],
+        "code": "numeros = {1, 2}\nnumeros.discard(5)\nprint(numeros)\n# {1, 2}"
+      },
+      {
+        "id": "pop",
+        "name": "pop()",
+        "tier": "regular",
+        "signature": "set.pop()",
+        "returns": "object",
+        "desc": "Elimina y devuelve un elemento arbitrario; lanza KeyError si el conjunto está vacío.",
+        "params": [],
+        "code": "numeros = {1, 2, 3}\nelemento = numeros.pop()\nprint(elemento)\nprint(numeros)"
+      },
+      {
+        "id": "clear",
+        "name": "clear()",
+        "tier": "regular",
+        "signature": "set.clear()",
+        "returns": "None",
+        "desc": "Elimina todos los elementos del conjunto.",
+        "params": [],
+        "code": "numeros = {1, 2, 3}\nnumeros.clear()\nprint(numeros)\n# set()"
+      },
+      {
+        "id": "copy",
+        "name": "copy()",
+        "tier": "regular",
+        "signature": "set.copy()",
+        "returns": "set",
+        "desc": "Devuelve una copia superficial del conjunto.",
+        "params": [],
+        "code": "original = {1, 2}\ncopia = original.copy()\ncopia.add(3)\nprint(original)  # {1, 2}\nprint(copia)     # {1, 2, 3}"
+      },
+      {
+        "id": "union",
+        "name": "union()",
+        "tier": "essential",
+        "signature": "set.union(*others)",
+        "returns": "set",
+        "desc": "Devuelve un nuevo conjunto con todos los elementos de los conjuntos unidos (|).",
+        "params": [
+          { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables que se unen al actual." }
+        ],
+        "code": "a = {1, 2}\nb = {2, 3}\nprint(a.union(b))\n# {1, 2, 3}\nprint(a | b)\n# {1, 2, 3}"
+      },
+      {
+        "id": "intersection",
+        "name": "intersection()",
+        "tier": "essential",
+        "signature": "set.intersection(*others)",
+        "returns": "set",
+        "desc": "Devuelve un nuevo conjunto con los elementos comunes (&).",
+        "params": [
+          { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables con los que se calcula la intersección." }
+        ],
+        "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a.intersection(b))\n# {2, 3}\nprint(a & b)\n# {2, 3}"
+      },
+      {
+        "id": "difference",
+        "name": "difference()",
+        "tier": "essential",
+        "signature": "set.difference(*others)",
+        "returns": "set",
+        "desc": "Devuelve un nuevo conjunto con los elementos que no están en otros (-).",
+        "params": [
+          { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables cuyos elementos se descartan." }
+        ],
+        "code": "a = {1, 2, 3}\nb = {2, 3}\nprint(a.difference(b))\n# {1}\nprint(a - b)\n# {1}"
+      },
+      {
+        "id": "symmetric_difference",
+        "name": "symmetric_difference()",
+        "tier": "regular",
+        "signature": "set.symmetric_difference(other)",
+        "returns": "set",
+        "desc": "Devuelve los elementos que están en uno u otro conjunto, pero no en ambos (^).",
+        "params": [
+          { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto con el que se calcula la diferencia simétrica." }
+        ],
+        "code": "a = {1, 2, 3}\nb = {2, 4}\nprint(a.symmetric_difference(b))\n# {1, 3, 4}\nprint(a ^ b)\n# {1, 3, 4}"
+      },
+      {
+        "id": "update",
+        "name": "update()",
+        "tier": "essential",
+        "signature": "set.update(*others)",
+        "returns": "None",
+        "desc": "Agrega en su lugar todos los elementos de otros conjuntos o iterables.",
+        "params": [
+          { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables cuyos elementos se agregan." }
+        ],
+        "code": "a = {1, 2}\na.update([2, 3])\nprint(a)\n# {1, 2, 3}"
+      },
+      {
+        "id": "isdisjoint",
+        "name": "isdisjoint()",
+        "tier": "regular",
+        "signature": "set.isdisjoint(other)",
+        "returns": "bool",
+        "desc": "Comprueba si dos conjuntos no comparten ningún elemento.",
+        "params": [
+          { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto o iterable con el que se compara." }
+        ],
+        "code": "a = {1, 2}\nb = {3, 4}\nprint(a.isdisjoint(b))  # True\nprint(a.isdisjoint({2}))  # False"
+      },
+      {
+        "id": "issuperset",
+        "name": "issuperset()",
+        "tier": "regular",
+        "signature": "set.issuperset(other)",
+        "returns": "bool",
+        "desc": "Comprueba si el conjunto contiene todos los elementos de otro.",
+        "params": [
+          { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto o iterable que se comprueba dentro del actual." }
+        ],
+        "code": "a = {1, 2, 3}\nprint(a.issuperset({1, 2}))  # True\nprint(a.issuperset({4}))     # False"
+      }
+    ]
+  }
+}
