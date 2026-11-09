@@ -6,7 +6,7 @@
     "properties": ["Mutable", "Secuencia ordenada", "Permite duplicados", "Indexada por posición"],
     "methods": [
       {
-        "id": "append",
+        "id": "listas-append",
         "name": "append()",
         "tier": "essential",
         "signature": "list.append(x)",
@@ -18,7 +18,7 @@
         "code": "frutas = [\"manzana\", \"pera\"]\nfrutas.append(\"naranja\")\nprint(frutas)\n# ['manzana', 'pera', 'naranja']"
       },
       {
-        "id": "extend",
+        "id": "listas-extend",
         "name": "extend()",
         "tier": "essential",
         "signature": "list.extend(iterable)",
@@ -30,7 +30,7 @@
         "code": "numeros = [1, 2, 3]\nnumeros.extend([4, 5, 6])\nprint(numeros)\n# [1, 2, 3, 4, 5, 6]"
       },
       {
-        "id": "insert",
+        "id": "listas-insert",
         "name": "insert()",
         "tier": "regular",
         "signature": "list.insert(i, x)",
@@ -43,7 +43,7 @@
         "code": "colores = [\"rojo\", \"azul\"]\ncolores.insert(1, \"verde\")\nprint(colores)\n# ['rojo', 'verde', 'azul']"
       },
       {
-        "id": "remove",
+        "id": "listas-remove",
         "name": "remove()",
         "tier": "essential",
         "signature": "list.remove(x)",
@@ -55,7 +55,7 @@
         "code": "frutas = [\"manzana\", \"pera\", \"manzana\"]\nfrutas.remove(\"manzana\")\nprint(frutas)\n# ['pera', 'manzana']"
       },
       {
-        "id": "pop",
+        "id": "listas-pop",
         "name": "pop()",
         "tier": "essential",
         "signature": "list.pop([i])",
@@ -67,7 +67,7 @@
         "code": "pila = [10, 20, 30]\nultimo = pila.pop()\nprint(ultimo)  # 30\nprint(pila)    # [10, 20]"
       },
       {
-        "id": "clear",
+        "id": "listas-clear",
         "name": "clear()",
         "tier": "regular",
         "signature": "list.clear()",
@@ -77,7 +77,7 @@
         "code": "lista = [1, 2, 3]\nlista.clear()\nprint(lista)\n# []"
       },
       {
-        "id": "index",
+        "id": "listas-index",
         "name": "index()",
         "tier": "regular",
         "signature": "list.index(x[, start[, end]])",
@@ -91,7 +91,7 @@
         "code": "numeros = [3, 7, 7, 12]\nprint(numeros.index(7))     # 1\nprint(numeros.index(7, 2))  # 2"
       },
       {
-        "id": "count",
+        "id": "listas-count",
         "name": "count()",
         "tier": "regular",
         "signature": "list.count(x)",
@@ -103,7 +103,7 @@
         "code": "notas = [4, 5, 4, 3, 5, 4]\nprint(notas.count(4))\n# 3"
       },
       {
-        "id": "sort",
+        "id": "listas-sort",
         "name": "sort()",
         "tier": "essential",
         "signature": "list.sort(*, key=None, reverse=False)",
@@ -116,7 +116,7 @@
         "code": "numeros = [5, 2, 8, 1]\nnumeros.sort()\nprint(numeros)  # [1, 2, 5, 8]\n\nnumeros.sort(reverse=True)\nprint(numeros)  # [8, 5, 2, 1]"
       },
       {
-        "id": "reverse",
+        "id": "listas-reverse",
         "name": "reverse()",
         "tier": "regular",
         "signature": "list.reverse()",
@@ -126,7 +126,7 @@
         "code": "numeros = [1, 2, 3]\nnumeros.reverse()\nprint(numeros)\n# [3, 2, 1]"
       },
       {
-        "id": "copy",
+        "id": "listas-copy",
         "name": "copy()",
         "tier": "regular",
         "signature": "list.copy()",
@@ -144,7 +144,7 @@
     "properties": ["Inmutable", "Secuencia ordenada", "Permite duplicados", "Indexada por posición"],
     "methods": [
       {
-        "id": "count",
+        "id": "tuplas-count",
         "name": "count()",
         "tier": "essential",
         "signature": "tuple.count(x)",
@@ -156,7 +156,7 @@
         "code": "tupla = (1, 2, 2, 3)\nprint(tupla.count(2))\n# 1"
       },
       {
-        "id": "index",
+        "id": "tuplas-index",
         "name": "index()",
         "tier": "essential",
         "signature": "tuple.index(x[, start[, end]])",
@@ -170,7 +170,7 @@
         "code": "tupla = (\"a\", \"b\", \"c\")\nprint(tupla.index(\"b\"))\n# 1"
       },
       {
-        "id": "concat",
+        "id": "tuplas-concat",
         "name": "+ (concatenar)",
         "tier": "regular",
         "signature": "tuple + tuple",
@@ -182,7 +182,7 @@
         "code": "tupla = (1, 2) + (3, 4)\nprint(tupla)\n# (1, 2, 3, 4)"
       },
       {
-        "id": "repeat",
+        "id": "tuplas-repeat",
         "name": "* (repetir)",
         "tier": "regular",
         "signature": "tuple * n",
@@ -194,7 +194,7 @@
         "code": "tupla = (\"hola\",) * 3\nprint(tupla)\n# ('hola', 'hola', 'hola')"
       },
       {
-        "id": "contains",
+        "id": "tuplas-contains",
         "name": "in (pertenencia)",
         "tier": "essential",
         "signature": "x in tuple",
@@ -206,7 +206,7 @@
         "code": "tupla = (1, 2, 3)\nprint(2 in tupla)       # True\nprint(5 not in tupla)   # True"
       },
       {
-        "id": "length",
+        "id": "tuplas-length",
         "name": "len()",
         "tier": "essential",
         "signature": "len(tuple)",
@@ -224,7 +224,7 @@
     "properties": ["Mutable", "Orden de inserción", "Claves únicas", "Acceso por hash"],
     "methods": [
       {
-        "id": "clear",
+        "id": "diccionarios-clear",
         "name": "clear()",
         "tier": "regular",
         "signature": "dict.clear()",
@@ -234,7 +234,7 @@
         "code": "d = {\"a\": 1, \"b\": 2}\nd.clear()\nprint(d)\n# {}"
       },
       {
-        "id": "copy",
+        "id": "diccionarios-copy",
         "name": "copy()",
         "tier": "regular",
         "signature": "dict.copy()",
@@ -244,7 +244,7 @@
         "code": "original = {\"a\": 1, \"b\": 2}\ncopia = original.copy()\ncopia[\"c\"] = 3\nprint(original)\n# {'a': 1, 'b': 2}"
       },
       {
-        "id": "fromkeys",
+        "id": "diccionarios-fromkeys",
         "name": "fromkeys()",
         "tier": "regular",
         "signature": "dict.fromkeys(iterable[, value])",
@@ -257,7 +257,7 @@
         "code": "claves = (\"a\", \"b\", \"c\")\nd = dict.fromkeys(claves, 0)\nprint(d)\n# {'a': 0, 'b': 0, 'c': 0}"
       },
       {
-        "id": "get",
+        "id": "diccionarios-get",
         "name": "get()",
         "tier": "essential",
         "signature": "dict.get(key[, default])",
@@ -270,7 +270,7 @@
         "code": "d = {\"nombre\": \"Ada\"}\nprint(d.get(\"nombre\"))   # Ada\nprint(d.get(\"edad\", 0))  # 0"
       },
       {
-        "id": "items",
+        "id": "diccionarios-items",
         "name": "items()",
         "tier": "essential",
         "signature": "dict.items()",
@@ -280,7 +280,7 @@
         "code": "d = {\"a\": 1, \"b\": 2}\nfor clave, valor in d.items():\n    print(clave, valor)\n# a 1\n# b 2"
       },
       {
-        "id": "keys",
+        "id": "diccionarios-keys",
         "name": "keys()",
         "tier": "essential",
         "signature": "dict.keys()",
@@ -290,7 +290,7 @@
         "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.keys()))\n# ['a', 'b']"
       },
       {
-        "id": "pop",
+        "id": "diccionarios-pop",
         "name": "pop()",
         "tier": "essential",
         "signature": "dict.pop(key[, default])",
@@ -303,7 +303,7 @@
         "code": "d = {\"a\": 1, \"b\": 2}\nvalor = d.pop(\"a\")\nprint(valor)  # 1\nprint(d)      # {'b': 2}"
       },
       {
-        "id": "popitem",
+        "id": "diccionarios-popitem",
         "name": "popitem()",
         "tier": "regular",
         "signature": "dict.popitem()",
@@ -313,7 +313,7 @@
         "code": "d = {\"a\": 1, \"b\": 2}\nprint(d.popitem())\n# ('b', 2)\nprint(d)\n# {'a': 1}"
       },
       {
-        "id": "setdefault",
+        "id": "diccionarios-setdefault",
         "name": "setdefault()",
         "tier": "regular",
         "signature": "dict.setdefault(key[, default])",
@@ -326,7 +326,7 @@
         "code": "d = {\"a\": 1}\nprint(d.setdefault(\"a\", 10))  # 1\nprint(d.setdefault(\"b\", 10))  # 10\nprint(d)\n# {'a': 1, 'b': 10}"
       },
       {
-        "id": "update",
+        "id": "diccionarios-update",
         "name": "update()",
         "tier": "essential",
         "signature": "dict.update([other])",
@@ -338,7 +338,7 @@
         "code": "d = {\"a\": 1}\nd.update({\"b\": 2, \"c\": 3})\nprint(d)\n# {'a': 1, 'b': 2, 'c': 3}"
       },
       {
-        "id": "values",
+        "id": "diccionarios-values",
         "name": "values()",
         "tier": "essential",
         "signature": "dict.values()",
@@ -356,7 +356,7 @@
     "properties": ["Mutable", "Sin orden", "Sin duplicados", "Elementos únicos"],
     "methods": [
       {
-        "id": "add",
+        "id": "sets-add",
         "name": "add()",
         "tier": "essential",
         "signature": "set.add(x)",
@@ -368,7 +368,7 @@
         "code": "numeros = {1, 2}\nnumeros.add(3)\nprint(numeros)\n# {1, 2, 3}"
       },
       {
-        "id": "remove",
+        "id": "sets-remove",
         "name": "remove()",
         "tier": "essential",
         "signature": "set.remove(x)",
@@ -380,7 +380,7 @@
         "code": "numeros = {1, 2, 3}\nnumeros.remove(2)\nprint(numeros)\n# {1, 3}"
       },
       {
-        "id": "discard",
+        "id": "sets-discard",
         "name": "discard()",
         "tier": "essential",
         "signature": "set.discard(x)",
@@ -392,7 +392,7 @@
         "code": "numeros = {1, 2}\nnumeros.discard(5)\nprint(numeros)\n# {1, 2}"
       },
       {
-        "id": "pop",
+        "id": "sets-pop",
         "name": "pop()",
         "tier": "regular",
         "signature": "set.pop()",
@@ -402,7 +402,7 @@
         "code": "numeros = {1, 2, 3}\nelemento = numeros.pop()\nprint(elemento)\nprint(numeros)"
       },
       {
-        "id": "clear",
+        "id": "sets-clear",
         "name": "clear()",
         "tier": "regular",
         "signature": "set.clear()",
@@ -412,7 +412,7 @@
         "code": "numeros = {1, 2, 3}\nnumeros.clear()\nprint(numeros)\n# set()"
       },
       {
-        "id": "copy",
+        "id": "sets-copy",
         "name": "copy()",
         "tier": "regular",
         "signature": "set.copy()",
@@ -422,7 +422,7 @@
         "code": "original = {1, 2}\ncopia = original.copy()\ncopia.add(3)\nprint(original)  # {1, 2}\nprint(copia)     # {1, 2, 3}"
       },
       {
-        "id": "union",
+        "id": "sets-union",
         "name": "union()",
         "tier": "essential",
         "signature": "set.union(*others)",
@@ -434,7 +434,7 @@
         "code": "a = {1, 2}\nb = {2, 3}\nprint(a.union(b))\n# {1, 2, 3}\nprint(a | b)\n# {1, 2, 3}"
       },
       {
-        "id": "intersection",
+        "id": "sets-intersection",
         "name": "intersection()",
         "tier": "essential",
         "signature": "set.intersection(*others)",
@@ -446,7 +446,7 @@
         "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a.intersection(b))\n# {2, 3}\nprint(a & b)\n# {2, 3}"
       },
       {
-        "id": "difference",
+        "id": "sets-difference",
         "name": "difference()",
         "tier": "essential",
         "signature": "set.difference(*others)",
@@ -458,7 +458,7 @@
         "code": "a = {1, 2, 3}\nb = {2, 3}\nprint(a.difference(b))\n# {1}\nprint(a - b)\n# {1}"
       },
       {
-        "id": "symmetric_difference",
+        "id": "sets-symmetric_difference",
         "name": "symmetric_difference()",
         "tier": "regular",
         "signature": "set.symmetric_difference(other)",
@@ -470,7 +470,7 @@
         "code": "a = {1, 2, 3}\nb = {2, 4}\nprint(a.symmetric_difference(b))\n# {1, 3, 4}\nprint(a ^ b)\n# {1, 3, 4}"
       },
       {
-        "id": "update",
+        "id": "sets-update",
         "name": "update()",
         "tier": "essential",
         "signature": "set.update(*others)",
@@ -482,7 +482,7 @@
         "code": "a = {1, 2}\na.update([2, 3])\nprint(a)\n# {1, 2, 3}"
       },
       {
-        "id": "isdisjoint",
+        "id": "sets-isdisjoint",
         "name": "isdisjoint()",
         "tier": "regular",
         "signature": "set.isdisjoint(other)",
@@ -494,7 +494,7 @@
         "code": "a = {1, 2}\nb = {3, 4}\nprint(a.isdisjoint(b))  # True\nprint(a.isdisjoint({2}))  # False"
       },
       {
-        "id": "issuperset",
+        "id": "sets-issuperset",
         "name": "issuperset()",
         "tier": "regular",
         "signature": "set.issuperset(other)",

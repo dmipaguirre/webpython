@@ -27,9 +27,9 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
     <div class="brand">
       <span class="brand__mark"><Icon name="terminal" size={18} /></span>
       <div class="brand__text">
-        <p class="brand__title">
+        <h1 class="brand__title">
           Python Methods Reference <span class="brand__version">v3.12</span>
-        </p>
+        </h1>
         <p class="brand__subtitle">Métodos nativos de estructuras de datos</p>
       </div>
     </div>
@@ -369,6 +369,21 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
 
   applyFilters();
   Prism.highlightAll();
+
+  const initialHash = window.location.hash.slice(1);
+  if (initialHash) {
+    const dashIndex = initialHash.indexOf('-');
+    const hashCategory = dashIndex > 0 ? initialHash.slice(0, dashIndex) : '';
+    const isKnownCategory = panels.some(
+      (panel) => panel.dataset.categoryPanel === hashCategory
+    );
+    if (isKnownCategory && hashCategory !== activeCategory) setCategory(hashCategory);
+    if (isKnownCategory) {
+      requestAnimationFrame(() => {
+        document.getElementById(initialHash)?.scrollIntoView({ block: 'start' });
+      });
+    }
+  }
 
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     searchInput?.focus({ preventScroll: true });
