@@ -15,7 +15,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento que se agrega al final de la lista." }
         ],
-        "code": "frutas = [\"manzana\", \"pera\"]\nfrutas.append(\"naranja\")\nprint(frutas)\n# ['manzana', 'pera', 'naranja']"
+        "code": "frutas = [\"manzana\", \"pera\"]\nfrutas.append(\"naranja\")\nprint(frutas)  # ['manzana', 'pera', 'naranja']"
       },
       {
         "id": "listas-extend",
@@ -27,7 +27,7 @@
         "params": [
           { "name": "iterable", "type": "iterable", "req": true, "desc": "Colección (lista, tupla, rango, string) cuyos elementos se agregan." }
         ],
-        "code": "numeros = [1, 2, 3]\nnumeros.extend([4, 5, 6])\nprint(numeros)\n# [1, 2, 3, 4, 5, 6]"
+        "code": "numeros = [1, 2, 3]\nnumeros.extend([4, 5, 6])\nprint(numeros)  # [1, 2, 3, 4, 5, 6]"
       },
       {
         "id": "listas-insert",
@@ -40,7 +40,7 @@
           { "name": "i", "type": "int", "req": true, "desc": "Índice donde se inserta el elemento." },
           { "name": "x", "type": "object", "req": true, "desc": "Elemento que se inserta en la lista." }
         ],
-        "code": "colores = [\"rojo\", \"azul\"]\ncolores.insert(1, \"verde\")\nprint(colores)\n# ['rojo', 'verde', 'azul']"
+        "code": "colores = [\"rojo\", \"azul\"]\ncolores.insert(1, \"verde\")\nprint(colores)  # ['rojo', 'verde', 'azul']"
       },
       {
         "id": "listas-remove",
@@ -52,7 +52,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento que se busca y elimina de la lista." }
         ],
-        "code": "frutas = [\"manzana\", \"pera\", \"manzana\"]\nfrutas.remove(\"manzana\")\nprint(frutas)\n# ['pera', 'manzana']"
+        "code": "frutas = [\"manzana\", \"pera\", \"manzana\"]\nfrutas.remove(\"manzana\")\nprint(frutas)  # ['pera', 'manzana']"
       },
       {
         "id": "listas-pop",
@@ -74,7 +74,7 @@
         "returns": "None",
         "desc": "Elimina todos los elementos de la lista, dejándola vacía.",
         "params": [],
-        "code": "lista = [1, 2, 3]\nlista.clear()\nprint(lista)\n# []"
+        "code": "lista = [1, 2, 3]\nlista.clear()\nprint(lista)  # []"
       },
       {
         "id": "listas-index",
@@ -100,7 +100,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento que se busca para contar sus apariciones." }
         ],
-        "code": "notas = [4, 5, 4, 3, 5, 4]\nprint(notas.count(4))\n# 3"
+        "code": "notas = [4, 5, 4, 3, 5, 4]\nprint(notas.count(4))  # 3"
       },
       {
         "id": "listas-sort",
@@ -123,7 +123,7 @@
         "returns": "None",
         "desc": "Invierte el orden de los elementos de la lista en su lugar.",
         "params": [],
-        "code": "numeros = [1, 2, 3]\nnumeros.reverse()\nprint(numeros)\n# [3, 2, 1]"
+        "code": "numeros = [1, 2, 3]\nnumeros.reverse()\nprint(numeros)  # [3, 2, 1]"
       },
       {
         "id": "listas-copy",
@@ -153,7 +153,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento que se busca para contar sus apariciones." }
         ],
-        "code": "tupla = (1, 2, 2, 3)\nprint(tupla.count(2))\n# 1"
+        "code": "tupla = (1, 2, 2, 3)\nprint(tupla.count(2))  # 2"
       },
       {
         "id": "tuplas-index",
@@ -167,7 +167,7 @@
           { "name": "start", "type": "int", "req": false, "desc": "Índice inicial de la búsqueda." },
           { "name": "end", "type": "int", "req": false, "desc": "Índice final (exclusivo) de la búsqueda." }
         ],
-        "code": "tupla = (\"a\", \"b\", \"c\")\nprint(tupla.index(\"b\"))\n# 1"
+        "code": "tupla = (\"a\", \"b\", \"c\")\nprint(tupla.index(\"b\"))  # 1"
       },
       {
         "id": "tuplas-concat",
@@ -179,7 +179,7 @@
         "params": [
           { "name": "other", "type": "tuple", "req": true, "desc": "Tupla que se concatena al final de la primera." }
         ],
-        "code": "tupla = (1, 2) + (3, 4)\nprint(tupla)\n# (1, 2, 3, 4)"
+        "code": "tupla = (1, 2) + (3, 4)\nprint(tupla)  # (1, 2, 3, 4)"
       },
       {
         "id": "tuplas-repeat",
@@ -191,7 +191,7 @@
         "params": [
           { "name": "n", "type": "int", "req": true, "desc": "Número de veces que se repiten los elementos." }
         ],
-        "code": "tupla = (\"hola\",) * 3\nprint(tupla)\n# ('hola', 'hola', 'hola')"
+        "code": "tupla = (\"hola\",) * 3\nprint(tupla)  # ('hola', 'hola', 'hola')"
       },
       {
         "id": "tuplas-contains",
@@ -203,7 +203,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento que se comprueba dentro de la tupla." }
         ],
-        "code": "tupla = (1, 2, 3)\nprint(2 in tupla)       # True\nprint(5 not in tupla)   # True"
+        "code": "tupla = (1, 2, 3)\nprint(2 in tupla)      # True\nprint(5 not in tupla)  # True"
       },
       {
         "id": "tuplas-length",
@@ -213,7 +213,7 @@
         "returns": "int",
         "desc": "Función integrada que devuelve la cantidad de elementos de la tupla.",
         "params": [],
-        "code": "tupla = (10, 20, 30)\nprint(len(tupla))\n# 3"
+        "code": "tupla = (10, 20, 30)\nprint(len(tupla))  # 3"
       }
     ]
   },
@@ -231,7 +231,7 @@
         "returns": "None",
         "desc": "Elimina todos los pares clave-valor del diccionario.",
         "params": [],
-        "code": "d = {\"a\": 1, \"b\": 2}\nd.clear()\nprint(d)\n# {}"
+        "code": "d = {\"a\": 1, \"b\": 2}\nd.clear()\nprint(d)  # {}"
       },
       {
         "id": "diccionarios-copy",
@@ -241,7 +241,7 @@
         "returns": "dict",
         "desc": "Devuelve una copia superficial del diccionario.",
         "params": [],
-        "code": "original = {\"a\": 1, \"b\": 2}\ncopia = original.copy()\ncopia[\"c\"] = 3\nprint(original)\n# {'a': 1, 'b': 2}"
+        "code": "original = {\"a\": 1, \"b\": 2}\ncopia = original.copy()\ncopia[\"c\"] = 3\nprint(original)  # {'a': 1, 'b': 2}"
       },
       {
         "id": "diccionarios-fromkeys",
@@ -254,7 +254,7 @@
           { "name": "iterable", "type": "iterable", "req": true, "desc": "Elementos que serán las claves del nuevo diccionario." },
           { "name": "value", "type": "object", "req": false, "desc": "Valor asignado a todas las claves. Por defecto None." }
         ],
-        "code": "claves = (\"a\", \"b\", \"c\")\nd = dict.fromkeys(claves, 0)\nprint(d)\n# {'a': 0, 'b': 0, 'c': 0}"
+        "code": "claves = (\"a\", \"b\", \"c\")\nd = dict.fromkeys(claves, 0)\nprint(d)  # {'a': 0, 'b': 0, 'c': 0}"
       },
       {
         "id": "diccionarios-get",
@@ -287,7 +287,7 @@
         "returns": "dict_keys",
         "desc": "Devuelve una vista con todas las claves del diccionario.",
         "params": [],
-        "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.keys()))\n# ['a', 'b']"
+        "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.keys()))  # ['a', 'b']"
       },
       {
         "id": "diccionarios-pop",
@@ -310,7 +310,7 @@
         "returns": "tuple",
         "desc": "Elimina y devuelve el último par clave-valor insertado (LIFO).",
         "params": [],
-        "code": "d = {\"a\": 1, \"b\": 2}\nprint(d.popitem())\n# ('b', 2)\nprint(d)\n# {'a': 1}"
+        "code": "d = {\"a\": 1, \"b\": 2}\nprint(d.popitem())  # ('b', 2)\nprint(d)            # {'a': 1}"
       },
       {
         "id": "diccionarios-setdefault",
@@ -323,7 +323,7 @@
           { "name": "key", "type": "hashable", "req": true, "desc": "Clave que se comprueba e inserta si falta." },
           { "name": "default", "type": "object", "req": false, "desc": "Valor a insertar si la clave no existe. Por defecto None." }
         ],
-        "code": "d = {\"a\": 1}\nprint(d.setdefault(\"a\", 10))  # 1\nprint(d.setdefault(\"b\", 10))  # 10\nprint(d)\n# {'a': 1, 'b': 10}"
+        "code": "d = {\"a\": 1}\nprint(d.setdefault(\"a\", 10))  # 1\nprint(d.setdefault(\"b\", 10))  # 10\nprint(d)                      # {'a': 1, 'b': 10}"
       },
       {
         "id": "diccionarios-update",
@@ -335,7 +335,7 @@
         "params": [
           { "name": "other", "type": "dict | iterable", "req": false, "desc": "Diccionario o iterable de pares clave-valor a fusionar." }
         ],
-        "code": "d = {\"a\": 1}\nd.update({\"b\": 2, \"c\": 3})\nprint(d)\n# {'a': 1, 'b': 2, 'c': 3}"
+        "code": "d = {\"a\": 1}\nd.update({\"b\": 2, \"c\": 3})\nprint(d)  # {'a': 1, 'b': 2, 'c': 3}"
       },
       {
         "id": "diccionarios-values",
@@ -345,7 +345,7 @@
         "returns": "dict_values",
         "desc": "Devuelve una vista con todos los valores del diccionario.",
         "params": [],
-        "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.values()))\n# [1, 2]"
+        "code": "d = {\"a\": 1, \"b\": 2}\nprint(list(d.values()))  # [1, 2]"
       }
     ]
   },
@@ -365,7 +365,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento hashable que se agrega al conjunto." }
         ],
-        "code": "numeros = {1, 2}\nnumeros.add(3)\nprint(numeros)\n# {1, 2, 3}"
+        "code": "numeros = {1, 2}\nnumeros.add(3)\nprint(numeros)  # {1, 2, 3}"
       },
       {
         "id": "sets-remove",
@@ -377,7 +377,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento hashable que se elimina del conjunto." }
         ],
-        "code": "numeros = {1, 2, 3}\nnumeros.remove(2)\nprint(numeros)\n# {1, 3}"
+        "code": "numeros = {1, 2, 3}\nnumeros.remove(2)\nprint(numeros)  # {1, 3}"
       },
       {
         "id": "sets-discard",
@@ -389,7 +389,7 @@
         "params": [
           { "name": "x", "type": "object", "req": true, "desc": "Elemento hashable que se intenta eliminar." }
         ],
-        "code": "numeros = {1, 2}\nnumeros.discard(5)\nprint(numeros)\n# {1, 2}"
+        "code": "numeros = {1, 2}\nnumeros.discard(5)\nprint(numeros)  # {1, 2}"
       },
       {
         "id": "sets-pop",
@@ -399,7 +399,7 @@
         "returns": "object",
         "desc": "Elimina y devuelve un elemento arbitrario; lanza KeyError si el conjunto está vacío.",
         "params": [],
-        "code": "numeros = {1, 2, 3}\nelemento = numeros.pop()\nprint(elemento)\nprint(numeros)"
+        "code": "numeros = {1, 2, 3}\nelemento = numeros.pop()  # quita un elemento arbitrario\nprint(elemento)  # 1\nprint(numeros)   # {2, 3}"
       },
       {
         "id": "sets-clear",
@@ -409,7 +409,7 @@
         "returns": "None",
         "desc": "Elimina todos los elementos del conjunto.",
         "params": [],
-        "code": "numeros = {1, 2, 3}\nnumeros.clear()\nprint(numeros)\n# set()"
+        "code": "numeros = {1, 2, 3}\nnumeros.clear()\nprint(numeros)  # set()"
       },
       {
         "id": "sets-copy",
@@ -431,7 +431,7 @@
         "params": [
           { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables que se unen al actual." }
         ],
-        "code": "a = {1, 2}\nb = {2, 3}\nprint(a.union(b))\n# {1, 2, 3}\nprint(a | b)\n# {1, 2, 3}"
+        "code": "a = {1, 2}\nb = {2, 3}\nprint(a.union(b))  # {1, 2, 3}\nprint(a | b)       # {1, 2, 3}"
       },
       {
         "id": "sets-intersection",
@@ -443,7 +443,19 @@
         "params": [
           { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables con los que se calcula la intersección." }
         ],
-        "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a.intersection(b))\n# {2, 3}\nprint(a & b)\n# {2, 3}"
+        "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a.intersection(b))  # {2, 3}\nprint(a & b)              # {2, 3}"
+      },
+      {
+        "id": "sets-intersection_update",
+        "name": "intersection_update()",
+        "tier": "regular",
+        "signature": "set.intersection_update(*others)",
+        "returns": "None",
+        "desc": "Deja en su lugar solo los elementos comunes con todos los otros conjuntos o iterables.",
+        "params": [
+          { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables con los que se calcula la intersección." }
+        ],
+        "code": "a = {1, 2, 3}\na.intersection_update({2, 3, 4})\nprint(a)  # {2, 3}"
       },
       {
         "id": "sets-difference",
@@ -455,7 +467,19 @@
         "params": [
           { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables cuyos elementos se descartan." }
         ],
-        "code": "a = {1, 2, 3}\nb = {2, 3}\nprint(a.difference(b))\n# {1}\nprint(a - b)\n# {1}"
+        "code": "a = {1, 2, 3}\nb = {2, 3}\nprint(a.difference(b))  # {1}\nprint(a - b)            # {1}"
+      },
+      {
+        "id": "sets-difference_update",
+        "name": "difference_update()",
+        "tier": "regular",
+        "signature": "set.difference_update(*others)",
+        "returns": "None",
+        "desc": "Elimina en su lugar todos los elementos presentes en los otros conjuntos o iterables.",
+        "params": [
+          { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables cuyos elementos se eliminan." }
+        ],
+        "code": "a = {1, 2, 3, 4}\na.difference_update({2, 3})\nprint(a)  # {1, 4}"
       },
       {
         "id": "sets-symmetric_difference",
@@ -467,7 +491,19 @@
         "params": [
           { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto con el que se calcula la diferencia simétrica." }
         ],
-        "code": "a = {1, 2, 3}\nb = {2, 4}\nprint(a.symmetric_difference(b))\n# {1, 3, 4}\nprint(a ^ b)\n# {1, 3, 4}"
+        "code": "a = {1, 2, 3}\nb = {2, 4}\nprint(a.symmetric_difference(b))  # {1, 3, 4}\nprint(a ^ b)                      # {1, 3, 4}"
+      },
+      {
+        "id": "sets-symmetric_difference_update",
+        "name": "symmetric_difference_update()",
+        "tier": "regular",
+        "signature": "set.symmetric_difference_update(other)",
+        "returns": "None",
+        "desc": "Deja en su lugar los elementos que están en uno u otro conjunto, pero no en ambos.",
+        "params": [
+          { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto o iterable con el que se calcula la diferencia simétrica." }
+        ],
+        "code": "a = {1, 2, 3}\na.symmetric_difference_update({2, 4})\nprint(a)  # {1, 3, 4}"
       },
       {
         "id": "sets-update",
@@ -479,7 +515,7 @@
         "params": [
           { "name": "others", "type": "iterable", "req": true, "desc": "Conjuntos o iterables cuyos elementos se agregan." }
         ],
-        "code": "a = {1, 2}\na.update([2, 3])\nprint(a)\n# {1, 2, 3}"
+        "code": "a = {1, 2}\na.update([2, 3])\nprint(a)  # {1, 2, 3}"
       },
       {
         "id": "sets-isdisjoint",
@@ -491,7 +527,19 @@
         "params": [
           { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto o iterable con el que se compara." }
         ],
-        "code": "a = {1, 2}\nb = {3, 4}\nprint(a.isdisjoint(b))  # True\nprint(a.isdisjoint({2}))  # False"
+        "code": "a = {1, 2}\nb = {3, 4}\nprint(a.isdisjoint(b))    # True\nprint(a.isdisjoint({2}))  # False"
+      },
+      {
+        "id": "sets-issubset",
+        "name": "issubset()",
+        "tier": "regular",
+        "signature": "set.issubset(other)",
+        "returns": "bool",
+        "desc": "Comprueba si todos los elementos del conjunto están presentes en otro.",
+        "params": [
+          { "name": "other", "type": "iterable", "req": true, "desc": "Conjunto o iterable que se compara con el actual." }
+        ],
+        "code": "a = {1, 2}\nb = {1, 2, 3}\nprint(a.issubset(b))  # True\nprint(b.issubset(a))  # False"
       },
       {
         "id": "sets-issuperset",

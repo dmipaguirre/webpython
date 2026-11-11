@@ -117,6 +117,22 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
       ))
     }
 
+    <section class="category results" data-results-view hidden>
+      <p class="breadcrumb results__label">
+        Resultados para «<span data-query-label></span>»
+      </p>
+
+      <div class="filters-row">
+        <TierFilter />
+      </div>
+
+      <div class="results__body" data-results-timeline></div>
+
+      <p class="empty" data-empty hidden>
+        Sin resultados para «<span data-empty-query></span>» en ninguna categoría.
+      </p>
+    </section>
+
     {
       categories
         .filter(({ key }) => key !== initialKey)
@@ -134,16 +150,19 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
     <p class="toc-panel__label">En esta página</p>
     {
       categories.map(({ key, data }) => (
-        <ul class="toc" data-toc={key} hidden={key !== initialKey}>
-          {data.methods.map((method) => (
-            <li>
-              <a class="toc__link" href={`#${method.id}`} data-toc-link={method.id}>
-                <span class="toc__dot" aria-hidden="true" />
-                {method.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div class="toc-group" data-toc-group={key} hidden={key !== initialKey}>
+          <p class="toc-group__label">{data.breadcrumb}</p>
+          <ul class="toc">
+            {data.methods.map((method) => (
+              <li>
+                <a class="toc__link" href={`#${method.id}`} data-toc-link={method.id}>
+                  <span class="toc__dot" aria-hidden="true" />
+                  {method.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       ))
     }
   </aside>
@@ -157,18 +176,19 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
   const searchInput = document.getElementById('hub-search') as HTMLInputElement | null;
   const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-category-panel]'));
   const categoryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-category-btn]'));
-  const tocLists = Array.from(document.querySelectorAll<HTMLElement>('[data-toc]'));
+  const tocGroups = Array.from(document.querySelectorAll<HTMLElement>('[data-toc-group]'));
   const tierButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tier-filter]'));
+  const resultsView = document.querySelector<HTMLElement>('[data-results-view]');
+  const resultsTimeline = document.querySelector<HTMLElement>('[data-results-timeline]');
 
   let activeCategory = 'listas';
   let activeTier = 'all';
   let query = '';
+  let isSearching = false;
 
   const timers = new WeakMap<Element, ReturnType<typeof setTimeout>>();
 
   const activePanel = () => panels.find((panel) => panel.dataset.categoryPanel === activeCategory);
-
-  const activeToc = () => tocLists.find((toc) => toc.dataset.toc === activeCategory);
 
   function syncTierButtons() {
     tierButtons.forEach((button) => {
@@ -178,14 +198,8 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
     });
   }
 
-  function applyFilters() {
-    const panel = activePanel();
-    const toc = activeToc();
-    if (!panel) return;
-
-    const cards = Array.from(panel.querySelectorAll<HTMLElement>('[data-method-card]'));
+  function filterCards(cards: HTMLElement[]) {
     let visible = 0;
-
     cards.forEach((card) => {
       const tierMatches = activeTier === 'all' || card.dataset.tier === activeTier;
       const searchMatches = !query || (card.dataset.search ?? '').includes(query);
@@ -193,25 +207,113 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
       card.hidden = !show;
       if (show) visible += 1;
     });
+    return visible;
+  }
 
-    if (toc) {
-      toc.querySelectorAll<HTMLElement>('li').forEach((item) => {
-        const link = item.querySelector<HTMLElement>('[data-toc-link]');
-        const card = link ? document.getElementById(link.dataset.tocLink ?? '') : null;
-        item.hidden = card ? card.hidden : false;
-      });
-    }
-
-    panel.querySelectorAll<HTMLElement>('[data-results]').forEach((label) => {
-      label.textContent = `${visible} / ${cards.length} métodos`;
+  function writeStatus(scope: ParentNode, visible: number, total: number) {
+    scope.querySelectorAll<HTMLElement>('[data-results]').forEach((label) => {
+      label.textContent = `${visible} / ${total} métodos`;
     });
 
-    const empty = panel.querySelector<HTMLElement>('[data-empty]');
-    const emptyQuery = panel.querySelector<HTMLElement>('[data-empty-query]');
+    const empty = scope.querySelector<HTMLElement>('[data-empty]');
+    const emptyQuery = scope.querySelector<HTMLElement>('[data-empty-query]');
     if (empty) {
       empty.hidden = visible !== 0;
       if (emptyQuery) emptyQuery.textContent = query || 'filtros actuales';
     }
+  }
+
+  function syncPanels() {
+    panels.forEach((panel) => {
+      panel.hidden = isSearching || panel.dataset.categoryPanel !== activeCategory;
+    });
+    if (resultsView) resultsView.hidden = !isSearching;
+    document.querySelector<HTMLElement>('.hub')?.classList.toggle('is-searching', isSearching);
+  }
+
+  function syncToc() {
+    tocGroups.forEach((group) => {
+      let visible = 0;
+      group.querySelectorAll<HTMLElement>('li').forEach((item) => {
+        const link = item.querySelector<HTMLElement>('[data-toc-link]');
+        const card = link ? document.getElementById(link.dataset.tocLink ?? '') : null;
+        item.hidden = card ? card.hidden : false;
+        if (!item.hidden) visible += 1;
+      });
+      group.hidden = isSearching ? visible === 0 : group.dataset.tocGroup !== activeCategory;
+    });
+  }
+
+  function renderResults() {
+    if (!resultsTimeline) return;
+    resultsTimeline.replaceChildren();
+
+    panels.forEach((panel) => {
+      const key = panel.dataset.categoryPanel ?? '';
+      const source = document.querySelector<HTMLTemplateElement>(`template[data-cards="${key}"]`);
+      if (!source) return;
+
+      const cards = Array.from(source.content.querySelectorAll('[data-method-card]'), (card) =>
+        card.cloneNode(true)
+      );
+      const title = document.createElement('h2');
+      title.className = 'category__title results__title';
+      title.textContent = panel.querySelector('.category__title')?.textContent ?? '';
+
+      const timeline = document.createElement('div');
+      timeline.className = 'timeline';
+      timeline.append(...cards);
+
+      const group = document.createElement('section');
+      group.className = 'results__group';
+      group.append(title, timeline);
+      resultsTimeline.append(group);
+    });
+
+    Prism.highlightAllUnder(resultsTimeline);
+  }
+
+  function enterSearch() {
+    isSearching = true;
+    panels.forEach((panel) => stashTimeline(panel));
+    renderResults();
+  }
+
+  function leaveSearch() {
+    isSearching = false;
+    resultsTimeline?.replaceChildren();
+    const panel = activePanel();
+    if (panel) hydrateTimeline(panel, activeCategory);
+  }
+
+  function applyFilters() {
+    const searching = query !== '';
+    if (searching && !isSearching) enterSearch();
+    if (!searching && isSearching) leaveSearch();
+    syncPanels();
+
+    if (isSearching) {
+      const cards = Array.from(resultsTimeline?.querySelectorAll<HTMLElement>('[data-method-card]') ?? []);
+      const visible = filterCards(cards);
+
+      resultsTimeline?.querySelectorAll<HTMLElement>('.results__group').forEach((group) => {
+        group.hidden = !group.querySelector('[data-method-card]:not([hidden])');
+      });
+
+      if (resultsView) {
+        const queryLabel = resultsView.querySelector<HTMLElement>('[data-query-label]');
+        if (queryLabel) queryLabel.textContent = query;
+        writeStatus(resultsView, visible, cards.length);
+      }
+    } else {
+      const panel = activePanel();
+      if (panel) {
+        const cards = Array.from(panel.querySelectorAll<HTMLElement>('[data-method-card]'));
+        writeStatus(panel, filterCards(cards), cards.length);
+      }
+    }
+
+    syncToc();
   }
 
   function stashTimeline(panel: HTMLElement) {
@@ -256,10 +358,6 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
     });
 
     if (panel) hydrateTimeline(panel, key);
-
-    tocLists.forEach((toc) => {
-      toc.hidden = toc.dataset.toc !== key;
-    });
 
     categoryButtons.forEach((button) => {
       const isActive = button.dataset.categoryBtn === key;
@@ -360,7 +458,7 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
       searchInput.select();
     }
 
-    if (event.key === 'Escape' && document.activeElement === searchInput && searchInput.value) {
+    if (event.key === 'Escape' && searchInput && document.activeElement === searchInput && searchInput.value) {
       searchInput.value = '';
       query = '';
       applyFilters();
@@ -750,6 +848,36 @@ const totalMethods = categories.reduce((total, { data }) => total + data.methods
   .empty span {
     color: var(--color-accent);
     font-family: var(--font-mono);
+  }
+
+  .results__label {
+    margin-top: var(--space-3);
+  }
+
+  .results__group + .results__group {
+    margin-top: var(--space-6);
+  }
+
+  .results__title {
+    margin-bottom: var(--space-4);
+  }
+
+  .toc-group + .toc-group {
+    margin-top: var(--space-4);
+  }
+
+  .toc-group__label {
+    display: none;
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+  }
+
+  .hub.is-searching .toc-group__label {
+    display: block;
   }
 
   .toc {
