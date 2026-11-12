@@ -1,0 +1,197 @@
+---
+import type { Category, TopicCategory } from '../../data/types';
+import Icon from '../Icon.astro';
+import LoopCard from '../bucles/LoopCard.astro';
+import MethodCard from '../estructuras/MethodCard.astro';
+import TierFilter from '../TierFilter.astro';
+
+interface Props {
+  panelKey: string;
+  data: Category | TopicCategory;
+  kind: 'methods' | 'topics';
+  activeKey: string;
+}
+
+const { panelKey, data, kind, activeKey } = Astro.props;
+const category = data as Category;
+const topicCategory = data as TopicCategory;
+---
+
+<section class="category" data-category-panel={panelKey} hidden={panelKey !== activeKey}>
+  <nav class="breadcrumb" aria-label="Ruta de navegación">
+    <span>Inicio</span>
+    <Icon name="chevron" size={12} />
+    <span>{data.breadcrumb}</span>
+  </nav>
+
+  <h2 class="category__title">{data.title}</h2>
+  <p class="category__desc">{data.description}</p>
+
+  <div class="props-card">
+    <p class="props-card__label">
+      <Icon name="layers" size={13} />
+      Propiedades
+    </p>
+    <ul class="props" aria-label="Propiedades informativas">
+      {data.properties.map((property) => <li class="prop">{property}</li>)}
+    </ul>
+  </div>
+
+  <div class="filters-row">
+    <TierFilter />
+  </div>
+
+  <div class="timeline" data-timeline={panelKey}>
+    {kind === 'methods' &&
+      panelKey === activeKey &&
+      category.methods.map((method) => <MethodCard method={method} />)}
+    {kind === 'topics' &&
+      panelKey === activeKey &&
+      topicCategory.topics.map((topic) => <LoopCard topic={topic} />)}
+  </div>
+
+  <p class="empty" data-empty hidden>
+    Sin resultados para «<span data-empty-query></span>» en {data.breadcrumb}.
+  </p>
+</section>
+
+<style is:global>
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .category__title {
+    margin-top: var(--space-3);
+    font-size: var(--fs-2xl);
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+  }
+
+  .category__desc {
+    margin: var(--space-3) 0 var(--space-4);
+    max-width: 70ch;
+    color: var(--color-text-muted);
+  }
+
+  .props {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+  }
+
+  .props-card {
+    margin-bottom: var(--space-5);
+    padding: var(--space-3) var(--space-4);
+    background: linear-gradient(
+      115deg,
+      rgba(249, 115, 22, 0.12),
+      var(--color-surface) 42%,
+      var(--color-surface-2)
+    );
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  }
+
+  .props-card__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .props-card__label svg {
+    opacity: 0.85;
+  }
+
+  .prop {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    padding: 2px 0;
+  }
+
+  .prop:not(:last-child)::after {
+    content: '·';
+    position: absolute;
+    right: calc(var(--space-3) * -1);
+    color: var(--color-text-dim);
+  }
+
+  .filters-row {
+    display: block;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding-left: 34px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 12px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-border) 8%,
+      var(--color-border) 92%,
+      transparent
+    );
+  }
+
+  .empty {
+    margin: var(--space-5) 0 0;
+    padding: var(--space-5);
+    text-align: center;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .empty span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 820px) {
+    .timeline {
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      left: 8px;
+    }
+
+    .category__title {
+      font-size: var(--fs-xl);
+    }
+  }
+</style>

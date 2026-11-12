@@ -1,0 +1,110 @@
+---
+import type { Category, TopicCategory } from '../../data/types';
+import CategoryButton from './CategoryButton.astro';
+import NavigationGroup from './NavigationGroup.astro';
+
+interface Props {
+  categories: { key: string; data: Category }[];
+  loopCategory: { key: string; data: TopicCategory };
+  activeKey: string;
+  total: number;
+  icons: Record<string, string>;
+}
+
+const { categories, loopCategory, activeKey, total, icons } = Astro.props;
+---
+
+<aside class="sidebar">
+  <p class="sidebar__label">Contenido</p>
+  <div class="sidebar__groups">
+    <NavigationGroup group="estructuras" label="Estructuras" icon="list" expanded>
+      {
+        categories.map(({ key, data }) => (
+          <li>
+            <CategoryButton
+              category={key}
+              label={data.breadcrumb}
+              count={data.methods.length}
+              icon={icons[key]}
+              active={key === activeKey}
+            />
+          </li>
+        ))
+      }
+    </NavigationGroup>
+
+    <NavigationGroup group="bucles" label="Bucles" icon="repeat">
+      <li>
+        <CategoryButton
+          category={loopCategory.key}
+          label={loopCategory.key}
+          count={loopCategory.data.topics.length}
+          icon="repeat"
+        />
+      </li>
+    </NavigationGroup>
+  </div>
+
+  <div class="sidebar__foot">
+    <span class="sidebar__foot-dot" aria-hidden="true"></span>
+    <p>{total} contenidos documentados</p>
+  </div>
+</aside>
+
+<style is:global>
+  .sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-5));
+    max-height: calc(100vh - var(--header-height) - var(--space-6));
+    overflow-y: auto;
+  }
+
+  .sidebar__label {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-text-dim);
+  }
+
+  .sidebar__groups {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .sidebar__foot {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-soft);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+  }
+
+  .sidebar__foot p {
+    margin: 0;
+  }
+
+  .sidebar__foot-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+  }
+
+  @media (max-width: 820px) {
+    .sidebar {
+      position: static;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .sidebar__foot {
+      display: none;
+    }
+  }
+</style>

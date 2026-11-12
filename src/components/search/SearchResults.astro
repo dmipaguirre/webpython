@@ -1,0 +1,33 @@
+---
+import TierFilter from '../TierFilter.astro';
+---
+
+<section class="category results" data-results-view hidden>
+  <p class="breadcrumb results__label">
+    Resultados para «<span data-query-label></span>»
+  </p>
+
+  <div class="filters-row">
+    <TierFilter />
+  </div>
+
+  <div class="results__body" data-results-timeline></div>
+
+  <p class="empty" data-empty hidden>
+    Sin resultados para «<span data-empty-query></span>» en ninguna categoría.
+  </p>
+</section>
+
+<style is:global>
+  .results__label {
+    margin-top: var(--space-3);
+  }
+
+  .results__group + .results__group {
+    margin-top: var(--space-6);
+  }
+
+  .results__title {
+    margin-bottom: var(--space-4);
+  }
+</style>

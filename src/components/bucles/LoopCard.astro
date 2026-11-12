@@ -1,0 +1,97 @@
+---
+import Icon from '../Icon.astro';
+import CodeBox from '../CodeBox.astro';
+import type { Topic } from '../../data/types';
+
+interface Props {
+  topic: Topic;
+}
+
+const { topic } = Astro.props;
+
+const searchText = [
+  topic.name,
+  topic.syntax,
+  topic.returns,
+  topic.desc,
+  ...topic.params.map((p) => `${p.name} ${p.type} ${p.desc}`),
+  ...topic.examples.flatMap((example) => [example.name, example.syntax, example.code])
+]
+  .join(' ')
+  .toLowerCase();
+
+const tierLabel = topic.tier === 'essential' ? 'Essential ★' : 'Regular';
+---
+
+<article class="method method--loop" id={topic.id} data-method-card data-tier={topic.tier} data-search={searchText}>
+  <span class="timeline-node" aria-hidden="true"></span>
+
+  <div class="method__info">
+    <div class="method__head">
+      <h3 class="method__name">{topic.name}</h3>
+      <span class={`tier tier--${topic.tier}`}>{tierLabel}</span>
+      <a
+        class="anchor"
+        href={`#${topic.id}`}
+        data-copy-link
+        title="Copiar enlace del tema"
+        aria-label={`Copiar enlace de ${topic.name}`}
+      >
+        <Icon name="hash" size={14} />
+        <span class="anchor__toast" aria-hidden="true">¡Copiado!</span>
+      </a>
+    </div>
+
+    <code class="method__signature">{topic.syntax}</code>
+
+    <p class="method__returns">
+      <span class="method__returns-label">Devuelve</span>
+      <code>{topic.returns}</code>
+    </p>
+
+    <p class="method__desc">{topic.desc}</p>
+
+    {
+      topic.params.length > 0 && (
+        <dl class="params">
+          {topic.params.map((param) => (
+            <div class="params__row">
+              <dt class="params__key">
+                <code>{param.name}</code>
+                <span class="params__type">{param.type}</span>
+                {!param.req && <span class="params__opt">opcional</span>}
+              </dt>
+              <dd class="params__desc">{param.desc}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+
+  </div>
+  {
+    topic.examples.length > 0 && (
+      <div class="method__code">
+        <div class="examples">
+          <div class="examples__list">
+            {topic.examples.map((example) => (
+              <div class="examples__item">
+                <CodeBox code={example.code} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+</article>
+
+<style is:global>
+  .method--loop {
+    display: grid;
+  }
+
+  .method--loop .examples {
+    height: 100%;
+  }
+</style>

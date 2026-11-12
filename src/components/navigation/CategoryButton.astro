@@ -1,0 +1,104 @@
+---
+import Icon from '../Icon.astro';
+
+interface Props {
+  category: string;
+  label: string;
+  count: number;
+  icon: string;
+  active?: boolean;
+}
+
+const { category, label, count, icon, active = false } = Astro.props;
+---
+
+<button
+  type="button"
+  class={`cat-btn${active ? ' is-active' : ''}`}
+  data-category-btn={category}
+  aria-pressed={active}
+>
+  <span class="cat-btn__icon"><Icon name={icon} size={15} /></span>
+  <span class="cat-btn__name">{label}</span>
+  <span class="cat-btn__badge">{count}</span>
+</button>
+
+<style is:global>
+  .cat-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 10px 12px;
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition:
+      color 0.18s ease,
+      background-color 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .cat-btn:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  .cat-btn.is-active {
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent-border);
+  }
+
+  .cat-btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-3);
+    color: inherit;
+  }
+
+  .cat-btn.is-active .cat-btn__icon {
+    background: rgba(249, 115, 22, 0.2);
+  }
+
+  .cat-btn__name {
+    flex: 1;
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cat-btn__badge {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+    background: var(--color-surface-3);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 1px 8px;
+  }
+
+  .cat-btn.is-active .cat-btn__badge {
+    color: var(--color-accent);
+    border-color: var(--color-accent-border);
+    background: transparent;
+  }
+
+  @media (max-width: 820px) {
+    .cat-btn {
+      width: auto;
+      white-space: nowrap;
+    }
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+import type { Category, TopicCategory } from '../../data/types';
+
+interface Props {
+  categories: { key: string; data: Category }[];
+  loopCategory: { key: string; data: TopicCategory };
+  activeKey: string;
+}
+
+const { categories, loopCategory, activeKey } = Astro.props;
+---
+
+<aside class="toc-panel">
+  <p class="toc-panel__label">En esta página</p>
+  {
+    categories.map(({ key, data }) => (
+      <div class="toc-group" data-toc-group={key} hidden={key !== activeKey}>
+        <p class="toc-group__label">{data.breadcrumb}</p>
+        <ul class="toc">
+          {data.methods.map((method) => (
+            <li>
+              <a class="toc__link" href={`#${method.id}`} data-toc-link={method.id}>
+                <span class="toc__dot" aria-hidden="true" />
+                {method.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+  <div class="toc-group" data-toc-group={loopCategory.key} hidden>
+    <p class="toc-group__label">{loopCategory.data.breadcrumb}</p>
+    <ul class="toc">
+      {loopCategory.data.topics.map((topic) => (
+        <li>
+          <a class="toc__link" href={`#${topic.id}`} data-toc-link={topic.id}>
+            <span class="toc__dot" aria-hidden="true" />
+            {topic.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</aside>
+
+<style is:global>
+  .toc-panel {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-5));
+    max-height: calc(100vh - var(--header-height) - var(--space-6));
+    overflow-y: auto;
+  }
+
+  .toc-panel__label {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-text-dim);
+  }
+
+  .toc-group + .toc-group {
+    margin-top: var(--space-4);
+  }
+
+  .toc-group__label {
+    display: none;
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+  }
+
+  .hub.is-searching .toc-group__label {
+    display: block;
+  }
+
+  .toc {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .toc__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 6px 10px;
+    margin-left: -1px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+    text-decoration: none;
+    border-left: 1px solid transparent;
+    transition:
+      color 0.16s ease,
+      border-color 0.16s ease;
+  }
+
+  .toc__link:hover {
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+  }
+
+  .toc__dot {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 1180px) {
+    .toc-panel {
+      display: none;
+    }
+  }
+</style>

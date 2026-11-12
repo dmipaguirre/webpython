@@ -1,18 +1,19 @@
 # Python Methods Reference v3.12
 
-Dashboard de referencia interactivo con los métodos nativos de las estructuras de datos de Python: **listas**, **tuplas**, **diccionarios** y **conjuntos**. Cada método incluye firma, parámetros, valor de retorno, nivel de uso y un ejemplo ejecutable.
+Dashboard de referencia interactivo con los métodos nativos y el control de flujo de Python. Incluye las estructuras **listas**, **tuplas**, **diccionarios** y **conjuntos**, además de la sección de **bucles** con `for`, `range`, `enumerate`, `zip`, `break`, `continue` y `for…else`.
 
 Diseño oscuro (dark mode), minimalista, de tres columnas, con alta accesibilidad tipográfica.
 
 ## Características
 
-- **4 categorías** con 41 métodos documentados (esenciales y regulares).
-- **Buscador global en tiempo real** sobre nombre, firma, descripción y parámetros.
+- **4 estructuras** con 45 métodos y **7 temas de bucles** documentados (esenciales y regulares).
+- **Menú lateral desplegable** con los grupos Estructuras y Bucles.
+- **Buscador global en tiempo real** sobre nombre, firma, descripción, parámetros y ejemplos, agrupado por categoría.
 - **Filtros por nivel** (`All`, `Essential ★`, `Regular`).
-- **Línea de tiempo vertical** con tarjeta de método de dos columnas: documentación a la izquierda, código a la derecha.
+- **Línea de tiempo vertical** con tarjetas de métodos y temas: documentación, sintaxis y código ejecutable.
 - **Resaltado de sintaxis** con Prism.js (tema Tomorrow Night, lenguaje Python).
 - **Copiado de snippets** con feedback visual ("¡Copiado!").
-- **Enlaces permanentes**: el símbolo `#` de cada método copia su URL con ancla; los deep links restauran la categoría desde el `hash` al cargar (ej. `/#diccionarios-update`).
+- **Enlaces permanentes**: el símbolo `#` de cada método o tema copia su URL con ancla; los deep links restauran la categoría desde el `hash` al cargar (ej. `/#diccionarios-update` o `/#bucles-for`).
 - **Atajo de teclado**: `/` enfoca el buscador, `Escape` lo limpia.
 - **Índice lateral** "En esta página" con anclas dinámicas a los métodos visibles.
 
@@ -40,7 +41,7 @@ pnpm install
 pnpm dev       # servidor de desarrollo
 pnpm build     # build de producción en dist/
 pnpm preview   # previsualizar el build
-pnpm check     # comprobación de tipos (requiere @astrojs/check y typescript)
+ pnpm check     # comprobación de tipos con @astrojs/check y TypeScript 6
 ```
 
 ## Estructura del proyecto
@@ -51,14 +52,27 @@ pnpm check     # comprobación de tipos (requiere @astrojs/check y typescript)
 │   └── fonts/               # Antonio.woff2 y FiraCode.woff2
 ├── src/
 │   ├── components/
-│   │   ├── ReferenceHub.astro   # componente principal (3 columnas + script cliente)
-│   │   ├── MethodCard.astro     # tarjeta de cada método
+│   │   ├── ReferenceHub.astro   # composición principal de la interfaz
+│   │   ├── hub/                 # header y paneles de contenido
+│   │   ├── estructuras/         # componentes de estructuras de datos
+│   │   │   └── MethodCard.astro  # tarjeta de cada método
+│   │   ├── bucles/               # componentes de control de flujo
+│   │   │   └── LoopCard.astro    # tarjeta de cada tema de bucles
+│   │   ├── navigation/           # grupos y botones del menú lateral
+│   │   ├── search/               # resultados de búsqueda global
+│   │   ├── CodeBox.astro        # caja de código compartida
 │   │   ├── TierFilter.astro     # filtros por nivel
 │   │   ├── Seo.astro            # meta tags (OG, Twitter, fonts preload)
 │   │   └── Icon.astro           # iconos SVG inline
 │   ├── data/
-│   │   ├── pythonData.json      # base de datos de métodos
+│   │   ├── estructuras/
+│   │   │   └── pythonData.json  # estructuras y métodos
+│   │   ├── bucles/
+│   │   │   └── buclesData.json  # temas y ejemplos de bucles
+│   │   ├── index.ts             # datos normalizados para la UI
 │   │   └── types.ts             # interfaces y tipos
+│   ├── scripts/
+│   │   └── referenceHub.ts      # estado e interactividad cliente
 │   ├── layouts/Layout.astro     # documento HTML + favicon
 │   ├── pages/index.astro        # página raíz
 │   └── styles/global.css        # @font-face, :root (colores, fuentes, tamaños)
@@ -66,7 +80,7 @@ pnpm check     # comprobación de tipos (requiere @astrojs/check y typescript)
 └── package.json
 ```
 
-## Formato de los datos (`src/data/pythonData.json`)
+## Formato de los datos (`src/data/estructuras/pythonData.json`)
 
 Cuatro categorías clave: `listas`, `tuplas`, `diccionarios`, `sets`. Cada una contiene:
 
@@ -92,6 +106,12 @@ Cuatro categorías clave: `listas`, `tuplas`, `diccionarios`, `sets`. Cada una c
 ```
 
 Los `id` llevan el prefijo de su categoría para que las anclas sean únicas en toda la página.
+
+## Datos de bucles (`src/data/bucles/buclesData.json`)
+
+Los bucles usan un modelo diferente al de los métodos porque `for`, `break` y `continue` son construcciones de control de flujo. La categoría `bucles` contiene temas con `syntax`, `returns`, `desc`, `params` y una lista de `examples`. Cada ejemplo incluye `name`, `tier`, `syntax`, `returns` y `code`.
+
+Los IDs de los temas utilizan el prefijo `bucles-` para mantener anclas únicas, por ejemplo `bucles-for`, `bucles-range` y `bucles-enumerate`.
 
 ## Paleta de colores
 

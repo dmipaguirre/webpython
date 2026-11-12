@@ -1,0 +1,149 @@
+{
+  "bucles": {
+    "title": "Bucles en Python (for, while…)",
+    "breadcrumb": "Bucles",
+    "description": "Los bucles repiten acciones sobre colecciones o rangos. En Python se utilizan principalmente for y while, junto con constructores como range, enumerate y zip.",
+    "properties": ["Control de flujo", "Repetición", "Iterable", "break / continue"],
+    "topics": [
+      {
+        "id": "bucles-for",
+        "name": "for",
+        "tier": "essential",
+        "syntax": "for variable in iterable:",
+        "returns": "None",
+        "desc": "Ejecuta el bloque indentado una vez por cada elemento de un iterable.",
+        "params": [
+          { "name": "variable", "type": "object", "req": true, "desc": "Nombre que recibe cada elemento de la iteración." },
+          { "name": "iterable", "type": "iterable", "req": true, "desc": "Lista, tupla, diccionario, conjunto, cadena o cualquier objeto iterable." }
+        ],
+        "examples": [
+          {
+            "name": "Lista",
+            "tier": "essential",
+            "syntax": "for x in lista:",
+            "returns": "None",
+            "code": "# Recorre una lista\nfrutas = [\"manzana\", \"pera\"]\nfor fruta in frutas:\n    print(fruta)\n# manzana\n# pera"
+          }
+        ]
+      },
+      {
+        "id": "bucles-range",
+        "name": "range()",
+        "tier": "essential",
+        "syntax": "for i in range(inicio, fin, paso):",
+        "returns": "range",
+        "desc": "Genera una secuencia de números enteros para recorrer posiciones o contar repeticiones.",
+        "params": [
+          { "name": "inicio", "type": "int", "req": false, "desc": "Primer número de la secuencia; por defecto 0." },
+          { "name": "fin", "type": "int", "req": true, "desc": "Límite superior exclusivo." },
+          { "name": "paso", "type": "int", "req": false, "desc": "Diferencia entre números; por defecto 1." }
+        ],
+        "examples": [
+          {
+            "name": "Posiciones",
+            "tier": "essential",
+            "syntax": "for i in range(len(lista)):",
+            "returns": "None",
+            "code": "# Recorre las posiciones de una lista\nfrutas = [\"manzana\", \"pera\", \"uva\"]\nfor i in range(len(frutas)):\n    print(i, frutas[i])\n# 0 manzana\n# 1 pera\n# 2 uva"
+          }
+        ]
+      },
+      {
+        "id": "bucles-enumerate",
+        "name": "enumerate()",
+        "tier": "essential",
+        "syntax": "for indice, valor in enumerate(iterable, inicio=0):",
+        "returns": "enumerate",
+        "desc": "Devuelve pares de índice y valor al recorrer un iterable.",
+        "params": [
+          { "name": "iterable", "type": "iterable", "req": true, "desc": "Objeto que se va a recorrer." },
+          { "name": "inicio", "type": "int", "req": false, "desc": "Valor inicial del índice; por defecto 0." }
+        ],
+        "examples": [
+          {
+            "name": "Índice y valor",
+            "tier": "essential",
+            "syntax": "for i, x in enumerate(lista):",
+            "returns": "None",
+            "code": "# Obtiene el índice y el valor\nfrutas = [\"manzana\", \"pera\"]\nfor i, fruta in enumerate(frutas, 1):\n    print(i, fruta)\n# 1 manzana\n# 2 pera"
+          }
+        ]
+      },
+      {
+        "id": "bucles-zip",
+        "name": "zip()",
+        "tier": "essential",
+        "syntax": "for a, b in zip(iterable1, iterable2):",
+        "returns": "zip",
+        "desc": "Une elementos de varios iterables de forma simultánea, deteniéndose en el más corto.",
+        "params": [
+          { "name": "iterable1", "type": "iterable", "req": true, "desc": "Primer iterable que se recorre." },
+          { "name": "iterable2", "type": "iterable", "req": true, "desc": "Segundo iterable que se recorre." }
+        ],
+        "examples": [
+          {
+            "name": "Dos listas",
+            "tier": "essential",
+            "syntax": "for a, b in zip(lista1, lista2):",
+            "returns": "None",
+            "code": "# Combina dos listas elemento a elemento\nnombres = [\"Ada\", \"Linus\"]\nedades = [36, 54]\nfor nombre, edad in zip(nombres, edades):\n    print(nombre, edad)\n# Ada 36\n# Linus 54"
+          }
+        ]
+      },
+      {
+        "id": "bucles-break",
+        "name": "break",
+        "tier": "essential",
+        "syntax": "for x in iterable:\n    if condicion:\n        break",
+        "returns": "None",
+        "desc": "Termina el bucle inmediatamente y continúa con la siguiente instrucción.",
+        "params": [],
+        "examples": [
+          {
+            "name": "Detener la búsqueda",
+            "tier": "essential",
+            "syntax": "if condicion: break",
+            "returns": "None",
+            "code": "numeros = [1, 5, 8, 12]\nfor n in numeros:\n    if n > 6:\n        print(\"encontrado\", n)\n        break\n# encontrado 8"
+          }
+        ]
+      },
+      {
+        "id": "bucles-continue",
+        "name": "continue",
+        "tier": "essential",
+        "syntax": "for x in iterable:\n    if condicion:\n        continue",
+        "returns": "None",
+        "desc": "Salta a la siguiente iteración del bucle sin ejecutar el resto del bloque actual.",
+        "params": [],
+        "examples": [
+          {
+            "name": "Ignorar elementos",
+            "tier": "essential",
+            "syntax": "if condicion: continue",
+            "returns": "None",
+            "code": "for n in [1, 2, 3, 4]:\n    if n % 2 == 0:\n        continue\n    print(n)\n# 1\n# 3"
+          }
+        ]
+      },
+      {
+        "id": "bucles-else",
+        "name": "for…else",
+        "tier": "regular",
+        "syntax": "for x in iterable:\n    ...\nelse:\n    ...",
+        "returns": "None",
+        "desc": "Ejecuta el bloque else si el bucle termina normalmente, es decir, sin ejecutar break.",
+        "params": [],
+        "examples": [
+          {
+            "name": "Ejecutar cuando no hubo break",
+            "tier": "regular",
+            "syntax": "for…else",
+            "returns": "None",
+            "code": "for n in [1, 2, 3]:\n    if n == 5:\n        break\nelse:\n    print(\"no encontrado\")\n# no encontrado"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+---
+interface Props {
+  code: string;
+}
+
+import Icon from './Icon.astro';
+
+const { code } = Astro.props;
+---
+
+<div class="codebox">
+  <div class="codebox__bar">
+    <span class="codebox__dots" aria-hidden="true">
+      <i></i><i></i><i></i>
+    </span>
+    <span class="codebox__file">python</span>
+    <button class="copy-btn" type="button" data-copy>
+      <Icon name="copy" size={13} />
+      <span class="copy-btn__label">Copiar</span>
+    </button>
+  </div>
+  <pre><code class="language-python">{code}</code></pre>
+</div>
+
+<style>
+  .codebox {
+    background: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .codebox__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 8px 12px;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .codebox__dots {
+    display: inline-flex;
+    gap: 5px;
+  }
+
+  .codebox__dots i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+
+  .codebox__dots i:first-child {
+    background: #f87171;
+  }
+
+  .codebox__dots i:nth-child(2) {
+    background: #fbbf24;
+  }
+
+  .codebox__dots i:nth-child(3) {
+    background: #4ade80;
+  }
+
+  .codebox__file {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-dim);
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 4px 10px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    background: var(--color-surface-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease;
+  }
+
+  .copy-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent-border);
+    background: var(--color-accent-soft);
+  }
+
+  .copy-btn.is-copied {
+    color: var(--color-success);
+    border-color: rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.1);
+  }
+
+  pre {
+    margin: 0;
+    padding: var(--space-4);
+    overflow-x: auto;
+    flex: 1;
+    background: var(--color-code-bg);
+  }
+
+  pre code {
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+    background: none;
+    text-shadow: none;
+    color: #ccc;
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
-import Icon from './Icon.astro';
-import type { Method } from '../data/types';
+import Icon from '../Icon.astro';
+import CodeBox from '../CodeBox.astro';
+import type { Method } from '../../data/types';
 
 interface Props {
   method: Method;
@@ -68,23 +69,11 @@ const tierLabel = method.tier === 'essential' ? 'Essential ★' : 'Regular';
   </div>
 
   <div class="method__code">
-    <div class="codebox">
-      <div class="codebox__bar">
-        <span class="codebox__dots" aria-hidden="true">
-          <i></i><i></i><i></i>
-        </span>
-        <span class="codebox__file">python</span>
-        <button class="copy-btn" type="button" data-copy>
-          <Icon name="copy" size={13} />
-          <span class="copy-btn__label">Copiar</span>
-        </button>
-      </div>
-      <pre><code class="language-python">{method.code}</code></pre>
-    </div>
+    <CodeBox code={method.code} />
   </div>
 </article>
 
-<style>
+<style is:global>
   .method {
     position: relative;
     display: grid;
@@ -290,102 +279,6 @@ const tierLabel = method.tier === 'essential' ? 'Essential ★' : 'Regular';
     margin: 0;
     font-size: var(--fs-sm);
     color: var(--color-text-muted);
-  }
-
-  .codebox {
-    background: var(--color-code-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .codebox__bar {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: 8px 12px;
-    background: var(--color-surface-2);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .codebox__dots {
-    display: inline-flex;
-    gap: 5px;
-  }
-
-  .codebox__dots i {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--color-border);
-  }
-
-  .codebox__dots i:first-child {
-    background: #f87171;
-  }
-
-  .codebox__dots i:nth-child(2) {
-    background: #fbbf24;
-  }
-
-  .codebox__dots i:nth-child(3) {
-    background: #4ade80;
-  }
-
-  .codebox__file {
-    font-family: var(--font-mono);
-    font-size: var(--fs-xs);
-    color: var(--color-text-dim);
-  }
-
-  .copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-left: auto;
-    padding: 4px 10px;
-    font-family: var(--font-mono);
-    font-size: var(--fs-xs);
-    color: var(--color-text-muted);
-    background: var(--color-surface-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition:
-      color 0.18s ease,
-      border-color 0.18s ease,
-      background-color 0.18s ease;
-  }
-
-  .copy-btn:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent-border);
-    background: var(--color-accent-soft);
-  }
-
-  .copy-btn.is-copied {
-    color: var(--color-success);
-    border-color: rgba(74, 222, 128, 0.4);
-    background: rgba(74, 222, 128, 0.1);
-  }
-
-  .method__code .codebox pre {
-    margin: 0;
-    padding: var(--space-4);
-    overflow-x: auto;
-    flex: 1;
-    background: var(--color-code-bg);
-  }
-
-  .method__code .codebox pre code {
-    font-size: var(--fs-sm);
-    line-height: 1.7;
-    background: none;
-    text-shadow: none;
-    color: #ccc;
   }
 
   @media (max-width: 980px) {

@@ -1,0 +1,102 @@
+---
+import Icon from '../Icon.astro';
+
+interface Props {
+  group: string;
+  label: string;
+  icon: string;
+  expanded?: boolean;
+}
+
+const { group, label, icon, expanded = false } = Astro.props;
+const panelId = `nav-${group}`;
+---
+
+<section class="nav-group" data-nav-group={group}>
+  <button
+    class={`nav-group__toggle${expanded ? ' is-open' : ''}`}
+    type="button"
+    data-nav-group-toggle={group}
+    aria-expanded={expanded}
+    aria-controls={panelId}
+  >
+    <span class="nav-group__icon"><Icon name={icon} size={15} /></span>
+    <span class="nav-group__name">{label}</span>
+    <span class="nav-group__arrow"><Icon name="chevron" size={13} /></span>
+  </button>
+  <ul class="sidebar__list" id={panelId} data-nav-group-panel={group} hidden={!expanded}>
+    <slot />
+  </ul>
+</section>
+
+<style is:global>
+  .nav-group {
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .nav-group__toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 10px 12px;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition:
+      color 0.18s ease,
+      background-color 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .nav-group__toggle:hover,
+  .nav-group__toggle.is-open {
+    color: var(--color-text);
+    border-color: var(--color-accent-border);
+    background: var(--color-accent-soft);
+  }
+
+  .nav-group__icon {
+    display: inline-flex;
+    color: var(--color-accent);
+  }
+
+  .nav-group__name {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .nav-group__arrow {
+    display: inline-flex;
+    margin-left: auto;
+    color: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-group__toggle.is-open .nav-group__arrow {
+    transform: rotate(90deg);
+  }
+
+  .sidebar__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: var(--space-2) 0 0;
+    padding: 0 0 0 var(--space-2);
+  }
+
+  @media (max-width: 820px) {
+    .sidebar__list {
+      flex-direction: column;
+      overflow: visible;
+      padding-bottom: 0;
+    }
+  }
+</style>
